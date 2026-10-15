@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mv8q0bih-66pnme97e">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>1. Fundamentos de las bases de datos como estructura de datos | 3. Estructura de Datos: Bases de Datos</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mv8q0bih-66pnme97e" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li class="active"> <a href="../html/1-fundamentos-de-las-bases-de-datos-como-estructur.html" class="active no-ch">1. Fundamentos de las bases de datos como estructura de datos</a>
+</li>
+<li> <a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" class="no-ch">2. Organización y representación de datos en bases de datos</a>
+</li>
+<li> <a href="../html/3-modelos-de-bases-de-datos-y-su-relacion-con-las-.html" class="no-ch">3. Modelos de bases de datos y su relación con las estructuras de datos</a>
+</li>
+<li> <a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" class="no-ch">4. Operaciones fundamentales sobre bases de datos</a>
+</li>
+<li> <a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" class="no-ch">5. Implementación de bases de datos con SQLite y Python</a>
+</li>
+<li> <a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" class="no-ch">6. Aplicaciones prácticas y optimización de bases de datos</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-bases-de-datos.html" class="no-ch">Repaso: Estructura de Datos: Bases de Datos</a>
+</li>
+</ul>
+</nav><main id="page-mv8q0bih-66pnme97e" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">3. Estructura de Datos: Bases de Datos</p></div>
+<div class="page-header"><h1 class="page-title">1. Fundamentos de las bases de datos como estructura de datos</h1></div>
+</header><div id="page-content-page-mv8q0bih-66pnme97e" class="page-content">
+<article id="block-mv8q3gpn-xo5sku9b5" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1792019423575-i5rupvqjv" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1792019423575-i5rupvqjv&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial,Helvetica,sans-serif; color: #1f2937; line-height: 1.65; max-width: 1200px; margin: 0 auto;"><!-- CABECERA -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Bases de Datos como Estructura de Datos · Subtema 1</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 29px; font-weight: 600;">Fundamentos de las bases de datos como estructura de datos</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Comprender la relación entre las bases de datos y las estructuras de datos, sus mecanismos de almacenamiento y sus aplicaciones en el desarrollo de software.</p>
+</div>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; border-radius: 8px; padding: 20px 24px; margin-bottom: 22px;">
+<h3 style="margin: 0 0 8px; font-size: 21px; color: #1d4ed8;">Objetivo de aprendizaje</h3>
+<p style="margin: 0;">Comprender los fundamentos de las bases de datos y su relación con las estructuras de datos, identificando sus características, mecanismos de almacenamiento y ventajas frente a otras formas de organización de información, para reconocer su importancia en el desarrollo de aplicaciones informáticas.</p>
+</div>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; border-radius: 8px; padding: 20px 24px; margin-bottom: 30px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Introducción</h3>
+<p>Los sistemas académicos, comerciales, bancarios y hospitalarios necesitan almacenar, consultar y modificar información. Durante el estudio de estructuras de datos se utilizan <strong>listas, diccionarios, pilas, colas y árboles</strong> para organizar información y ejecutar operaciones.</p>
+<p>Cuando una aplicación también necesita conservar registros entre ejecuciones, mantener relaciones entre diferentes conjuntos de datos y garantizar determinadas reglas de integridad, las <strong>bases de datos</strong> resultan especialmente útiles.</p>
+<p style="margin-bottom: 0;">Una base de datos no sustituye necesariamente a las estructuras de datos: su funcionamiento interno puede apoyarse en <strong>árboles, tablas hash, buffers y algoritmos de búsqueda</strong>, mientras que el programa sigue utilizando estructuras en memoria.</p>
+</div>
+<!-- SECCIÓN 1.1 -->
+<section style="margin-bottom: 34px;">
+<h3 style="font-size: 24px; color: #1f2937; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 18px;">1.1 Concepto de base de datos</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 9px; margin-bottom: 18px;">
+<p style="margin: 0; font-size: 17px;">Una <strong>base de datos</strong> es un conjunto organizado de datos relacionados entre sí, almacenados de manera estructurada para facilitar su acceso, consulta, actualización y administración.</p>
+</div>
+<p>Su propósito es facilitar la gestión de información, manteniendo su disponibilidad y aplicando, según el sistema, mecanismos de integridad y consistencia.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 240px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 17px; border-radius: 8px;"><strong style="color: #1d4ed8;">Organización y relaciones</strong>
+<p style="margin: 7px 0 0;">Los registros siguen una estructura y pueden vincularse con otros conjuntos de información.</p>
+</div>
+<div style="flex: 1 1 240px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 17px; border-radius: 8px;"><strong style="color: #047857;">Persistencia y acceso</strong>
+<p style="margin: 7px 0 0;">Los registros pueden mantenerse entre ejecuciones y recuperarse mediante consultas.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 17px; border-radius: 8px;"><strong style="color: #92400e;">Integridad y seguridad</strong>
+<p style="margin: 7px 0 0;">Pueden definirse reglas de validez y controles de acceso a la información.</p>
+</div>
+</div>
+<h4 style="font-size: 19px; color: #1d4ed8; margin-bottom: 10px;">Ejemplo: registro de estudiantes</h4>
+<div style="overflow-x: auto; margin-bottom: 12px;">
+<table style="width: 100%; min-width: 560px; border-collapse: collapse;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">ID</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Nombre</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Carrera</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Edad</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #FFFFFF;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">20</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Redes Informáticas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">22</td>
+</tr>
+<tr style="background: #FFFFFF;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">María Hernández</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">21</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">4</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">José Ramírez</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Ciberseguridad</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A partir de estos registros se pueden buscar estudiantes por identificador, filtrar por carrera, actualizar datos, agregar nuevas filas y obtener estadísticas.</p>
+</section>
+<!-- SECCIÓN 1.2 -->
+<section style="margin-bottom: 34px;">
+<h3 style="font-size: 24px; color: #1f2937; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 18px;">1.2 Relación entre bases de datos y estructuras de datos</h3>
+<p>Una <strong>estructura de datos</strong> organiza elementos para facilitar determinadas operaciones; una <strong>base de datos</strong> reúne información organizada y suele gestionarse mediante un sistema que ofrece persistencia, consultas, controles e integridad.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; border-radius: 8px; padding: 17px 20px; margin: 18px 0;"><strong>Idea clave:</strong> una base de datos no es simplemente una lista o una estructura aislada. Los gestores pueden utilizar varias estructuras y algoritmos para administrar información.</div>
+<div style="overflow-x: auto;">
+<table style="width: 100%; min-width: 650px; border-collapse: collapse;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Aspecto</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Estructuras de datos</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Bases de datos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Propósito</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Organizar elementos para operar sobre ellos.</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Almacenar, relacionar y administrar información.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Ejemplos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Listas, árboles, grafos, tablas hash.</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Tablas, documentos, índices y relaciones.</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Conservación</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Depende de la implementación.</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Habitualmente almacenamiento persistente.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Consultas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Mediante algoritmos del programa.</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Mediante consultas y mecanismos del gestor.</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Integridad</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Normalmente se programa.</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Puede establecer restricciones de datos.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="font-size: 19px; color: #1d4ed8;">Ejemplo: lista de estudiantes en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; border-radius: 9px; padding: 20px; overflow-x: auto; font-family: Consolas,Monaco,monospace; font-size: 14px; line-height: 1.6;"><code>estudiantes = [&quot;Ana&quot;, &quot;Carlos&quot;, &quot;María&quot;, &quot;José&quot;]
+print(estudiantes)
+print(estudiantes[0])
+estudiantes.append(&quot;Lucía&quot;)
+print(estudiantes)</code></pre>
+<p>La lista conserva un orden y permite acceder a elementos o añadir registros. Si solo existe en la memoria del proceso, su contenido no queda guardado automáticamente al finalizar la aplicación.</p>
+<h4 style="font-size: 19px; color: #1d4ed8;">Estructuras utilizadas por los gestores</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px;">
+<div style="flex: 1 1 200px; border: 1px solid #BFDBFE; background: #EFF6FF; padding: 16px; border-radius: 8px;"><strong style="color: #1d4ed8;">Árboles</strong>
+<p style="margin: 6px 0 0;">Organización de índices y búsqueda por rangos.</p>
+</div>
+<div style="flex: 1 1 200px; border: 1px solid #A7F3D0; background: #ECFDF5; padding: 16px; border-radius: 8px;"><strong style="color: #047857;">Tablas hash</strong>
+<p style="margin: 6px 0 0;">Localización por claves en mecanismos especializados.</p>
+</div>
+<div style="flex: 1 1 200px; border: 1px solid #FDE68A; background: #FFFBEB; padding: 16px; border-radius: 8px;"><strong style="color: #92400e;">Listas y buffers</strong>
+<p style="margin: 6px 0 0;">Resultados temporales y páginas almacenadas en memoria.</p>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 1.3 -->
+<section style="margin-bottom: 34px;">
+<h3 style="font-size: 24px; color: #1f2937; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 18px;">1.3 Almacenamiento en memoria y almacenamiento persistente</h3>
+<p>Los programas pueden mantener información temporalmente en <strong>memoria RAM</strong> o conservarla en dispositivos de almacenamiento <strong>no volátil</strong>.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 18px 0;">
+<div style="flex: 1 1 280px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px;">
+<h4 style="color: #1d4ed8; margin: 0 0 8px;">En memoria</h4>
+<p>Permite procesar rápidamente variables y estructuras mientras se ejecuta el programa. Su contenido se pierde al terminar el proceso, salvo que se guarde por otro medio.</p>
+<strong>Ejemplo:</strong> una lista de productos en Python.</div>
+<div style="flex: 1 1 280px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;">
+<h4 style="color: #047857; margin: 0 0 8px;">Persistente</h4>
+<p>Permite recuperar información entre ejecuciones mediante archivos, dispositivos o servicios de almacenamiento.</p>
+<strong>Ejemplo:</strong> una base de datos SQLite guardada en un archivo.</div>
+</div>
+<h4 style="font-size: 19px; color: #1d4ed8;">Ejemplo con lista de diccionarios</h4>
+<pre style="background: #1F2937; color: #f9fafb; border-radius: 9px; padding: 20px; overflow-x: auto; font-family: Consolas,Monaco,monospace; font-size: 14px; line-height: 1.6;"><code>productos = [
+    {&quot;id&quot;: 1, &quot;nombre&quot;: &quot;Teclado&quot;, &quot;precio&quot;: 25.00},
+    {&quot;id&quot;: 2, &quot;nombre&quot;: &quot;Mouse&quot;, &quot;precio&quot;: 15.00}
+]
+
+print(productos)</code></pre>
+<div style="overflow-x: auto;">
+<table style="width: 100%; min-width: 590px; border-collapse: collapse;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Criterio</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">En memoria</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Persistente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Medio</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">RAM</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">SSD, disco u otros medios</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Duración</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Normalmente temporal</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Entre ejecuciones</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Uso típico</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Cálculos, listas y resultados temporales</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Registros y archivos de bases de datos</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; border-radius: 8px; padding: 16px 20px; margin-top: 18px;"><strong>Importante:</strong> también existen bases de datos en memoria y estructuras de datos persistentes. La distinción depende del diseño y la implementación, no solo del nombre de la tecnología.</div>
+</section>
+<!-- SECCIÓN 1.4 -->
+<section style="margin-bottom: 34px;">
+<h3 style="font-size: 24px; color: #1f2937; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 18px;">1.4 Importancia de las bases de datos en el desarrollo de software</h3>
+<p>La gestión de información mediante bases de datos facilita el desarrollo de sistemas que requieren registros organizados, consultas, relaciones y reglas de validez.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 250px; border: 1px solid #BFDBFE; background: #EFF6FF; border-radius: 8px; padding: 18px;"><strong style="color: #1d4ed8;">Organización</strong>
+<p style="margin: 7px 0 0;">Separar estudiantes, materias y matrículas en conjuntos relacionados.</p>
+</div>
+<div style="flex: 1 1 250px; border: 1px solid #A7F3D0; background: #ECFDF5; border-radius: 8px; padding: 18px;"><strong style="color: #047857;">Recuperación</strong>
+<p style="margin: 7px 0 0;">Consultar registros por criterios y aprovechar índices cuando conviene.</p>
+</div>
+<div style="flex: 1 1 250px; border: 1px solid #FDE68A; background: #FFFBEB; border-radius: 8px; padding: 18px;"><strong style="color: #92400e;">Integridad</strong>
+<p style="margin: 7px 0 0;">Definir identificadores únicos y relaciones válidas.</p>
+</div>
+<div style="flex: 1 1 250px; border: 1px solid #A7F3D0; background: #ECFDF5; border-radius: 8px; padding: 18px;"><strong style="color: #047857;">Concurrencia</strong>
+<p style="margin: 7px 0 0;">Coordinar operaciones de múltiples usuarios mediante mecanismos del gestor.</p>
+</div>
+<div style="flex: 1 1 250px; border: 1px solid #BFDBFE; background: #EFF6FF; border-radius: 8px; padding: 18px;"><strong style="color: #1d4ed8;">Mantenimiento</strong>
+<p style="margin: 7px 0 0;">Facilitar ampliaciones y cambios del sistema.</p>
+</div>
+<div style="flex: 1 1 250px; border: 1px solid #FDE68A; background: #FFFBEB; border-radius: 8px; padding: 18px;"><strong style="color: #92400e;">Escalabilidad</strong>
+<p style="margin: 7px 0 0;">Planificar el crecimiento del volumen de datos y las consultas.</p>
+</div>
+</div>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-radius: 9px; padding: 22px 24px;">
+<h4 style="margin: 0 0 10px; color: #1f2937; font-size: 20px;">Caso de análisis: biblioteca universitaria</h4>
+<p>Una biblioteca administra libros, usuarios y préstamos. Una base de datos permite representar estos conjuntos de registros y responder consultas sobre disponibilidad, préstamos activos y devoluciones pendientes.</p>
+<div style="overflow-x: auto;">
+<table style="width: 100%; min-width: 550px; border-collapse: collapse;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 11px; border: 1px solid #2563EB; text-align: left;">Conjunto</th>
+<th style="padding: 11px; border: 1px solid #2563EB; text-align: left;">Datos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Libros</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Código, título, autor, categoría</td>
+</tr>
+<tr style="background: #FFFFFF;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Usuarios</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Identificador, nombre, correo</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Préstamos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Código, usuario, libro, fechas</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 1.5 -->
+<section style="margin-bottom: 34px;">
+<h3 style="font-size: 24px; color: #1f2937; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 18px;">1.5 Ventajas frente a listas y diccionarios</h3>
+<p>Las listas y los diccionarios de Python son excelentes para almacenar y procesar información temporal o conjuntos manejables de elementos. Cuando se requieren persistencia, relaciones, restricciones y consultas complejas, un gestor de bases de datos puede facilitar el trabajo.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 18px 0;">
+<div style="flex: 1 1 270px; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 18px;"><strong style="color: #1d4ed8;">Lista de Python</strong>
+<pre style="background: #1F2937; color: #ffffff; border-radius: 7px; padding: 13px; overflow-x: auto; font-size: 13px;"><code>clientes = [&quot;Ana&quot;, &quot;Carlos&quot;, &quot;María&quot;]</code></pre>
+<p style="margin-bottom: 0;">Permite almacenar secuencias y recorrer elementos.</p>
+</div>
+<div style="flex: 1 1 270px; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 8px; padding: 18px;"><strong style="color: #047857;">Diccionario de Python</strong>
+<pre style="background: #1F2937; color: #ffffff; border-radius: 7px; padding: 13px; overflow-x: auto; font-size: 13px;"><code>cliente = {
+    &quot;id&quot;: 1,
+    &quot;nombre&quot;: &quot;Ana&quot;,
+    &quot;correo&quot;: &quot;ana@ejemplo.com&quot;
+}</code></pre>
+<p style="margin-bottom: 0;">Representa entidades mediante pares clave-valor.</p>
+</div>
+</div>
+<pre style="background: #1F2937; color: #f9fafb; border-radius: 9px; padding: 20px; overflow-x: auto; font-family: Consolas,Monaco,monospace; font-size: 14px; line-height: 1.6;"><code>clientes = [
+    {&quot;id&quot;: 1, &quot;nombre&quot;: &quot;Ana&quot;},
+    {&quot;id&quot;: 2, &quot;nombre&quot;: &quot;Carlos&quot;},
+    {&quot;id&quot;: 3, &quot;nombre&quot;: &quot;María&quot;}
+]</code></pre>
+<div style="overflow-x: auto;">
+<table style="width: 100%; min-width: 640px; border-collapse: collapse;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Necesidad</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Listas / diccionarios</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Base de datos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Datos temporales</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Muy adecuados</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Posible</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Guardar entre ejecuciones</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Requiere guardado adicional</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Soporte habitual</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Relacionar registros</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Se programa</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Mecanismos específicos</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Validar restricciones</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Se programa</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Restricciones del gestor</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Consultas variadas</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Algoritmos personalizados</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Lenguajes e índices</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 17px 20px; border-radius: 8px; margin-top: 20px;"><strong>Precisión técnica:</strong> una base de datos no siempre es más rápida que un diccionario. Acceder por clave a un diccionario de Python suele tener complejidad promedio <code>O(1)</code>. La elección depende del problema, el tamaño, el acceso y la persistencia.</div>
+</section>
+<!-- SECCIÓN 1.6 -->
+<section style="margin-bottom: 34px;">
+<h3 style="font-size: 24px; color: #1f2937; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 18px;">1.6 Aplicaciones prácticas de las bases de datos</h3>
+<p>Los sistemas de información utilizan bases de datos para manejar registros que deben conservarse y consultarse.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 18px 0;">
+<div style="flex: 1 1 240px; background: #FFFFFF; border: 1px solid #E5E7EB; border-top: 5px solid #3B82F6; padding: 17px; border-radius: 8px;"><strong style="color: #1d4ed8;">Sistemas académicos</strong>
+<p style="margin: 7px 0 0;">Estudiantes, docentes, asignaturas, matrículas y calificaciones.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFFFF; border: 1px solid #E5E7EB; border-top: 5px solid #10B981; padding: 17px; border-radius: 8px;"><strong style="color: #047857;">Sistemas comerciales</strong>
+<p style="margin: 7px 0 0;">Productos, proveedores, inventarios y facturación.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFFFF; border: 1px solid #E5E7EB; border-top: 5px solid #FBBF24; padding: 17px; border-radius: 8px;"><strong style="color: #92400e;">Sistemas hospitalarios</strong>
+<p style="margin: 7px 0 0;">Pacientes, citas, expedientes y resultados.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFFFF; border: 1px solid #E5E7EB; border-top: 5px solid #3B82F6; padding: 17px; border-radius: 8px;"><strong style="color: #1d4ed8;">Comercio electrónico</strong>
+<p style="margin: 7px 0 0;">Catálogos, usuarios, pedidos y existencias.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo introductorio: Python y SQLite</h4>
+<p>SQLite permite crear una base de datos persistente mediante el módulo <code>sqlite3</code> de la biblioteca estándar de Python.</p>
+<pre style="background: #1F2937; color: #f9fafb; border-radius: 9px; padding: 22px; overflow-x: auto; font-family: Consolas,Monaco,monospace; font-size: 14px; line-height: 1.6;"><code>import sqlite3
+
+# Crear o abrir el archivo de base de datos
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+
+# Crear la tabla
+conexion.execute(&quot;&quot;&quot;
+    CREATE TABLE IF NOT EXISTS estudiantes (
+        id INTEGER PRIMARY KEY,
+        nombre TEXT NOT NULL,
+        carrera TEXT NOT NULL
+    )
+&quot;&quot;&quot;)
+
+# Insertar un registro con parámetros
+conexion.execute(
+    &quot;INSERT INTO estudiantes (nombre, carrera) VALUES (?, ?)&quot;,
+    (&quot;Ana&quot;, &quot;Desarrollo de Software&quot;)
+)
+
+# Confirmar los cambios
+conexion.commit()
+
+# Recuperar los registros
+registros = conexion.execute(
+    &quot;SELECT * FROM estudiantes&quot;
+).fetchall()
+
+for registro in registros:
+    print(registro)
+
+conexion.close()</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 8px; padding: 18px 21px;"><strong style="color: #047857;">¿Qué representa cada elemento?</strong>
+<ul style="margin: 10px 0 0; padding-left: 22px;">
+<li><strong>Python:</strong> ejecuta la lógica de la aplicación.</li>
+<li><strong>SQLite:</strong> administra tablas y registros.</li>
+<li><strong>universidad.db:</strong> guarda la información de forma persistente.</li>
+<li><strong>commit():</strong> confirma las modificaciones de la transacción.</li>
+</ul>
+</div>
+<p style="margin-top: 15px;">Al ejecutar nuevamente el programa se insertará otro registro. El control de duplicados y las operaciones CRUD se abordarán en los temas posteriores.</p>
+</section>
+<!-- ACTIVIDAD -->
+<section style="margin-bottom: 30px;">
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; border-left: 6px solid #FBBF24; border-radius: 9px; padding: 22px 24px;">
+<h3 style="color: #92400e; font-size: 22px; margin: 0 0 12px;">Actividad de análisis y reflexión</h3>
+<p><strong>Situación:</strong> una universidad almacena estudiantes, asignaturas, matrículas y calificaciones solo en listas y diccionarios. Cuando termina el programa, la información deja de estar disponible. También necesita consultas simultáneas y relaciones entre registros.</p>
+<ol style="padding-left: 24px; margin: 12px 0;">
+<li style="margin-bottom: 7px;">¿Qué limitaciones presenta este enfoque?</li>
+<li style="margin-bottom: 7px;">¿Qué beneficios aportaría una base de datos?</li>
+<li style="margin-bottom: 7px;">¿Qué información debe conservarse y por qué?</li>
+<li style="margin-bottom: 7px;">¿Cómo relacionarías estudiantes, asignaturas y matrículas?</li>
+<li>¿Por qué las listas y los diccionarios seguirían siendo útiles dentro de la aplicación?</li>
+</ol>
+<p style="margin: 12px 0 0;"><strong>Resultado esperado:</strong> justificar técnicamente cuándo utilizar una base de datos y cómo se complementa con las estructuras de datos en memoria.</p>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 25px 30px; border-radius: 10px;">
+<h3 style="margin: 0 0 12px; color: #fbbf24; font-size: 22px;">Síntesis</h3>
+<p style="margin: 0 0 10px;">Las bases de datos organizan, relacionan y administran información para que pueda recuperarse, modificarse y conservarse según las necesidades de un sistema.</p>
+<p style="margin: 0 0 10px;">Su funcionamiento puede apoyarse en estructuras como árboles, tablas hash, listas y buffers, así como en algoritmos de procesamiento y búsqueda.</p>
+<p style="margin: 0;">Las bases de datos y las estructuras en memoria no son excluyentes: se complementan para resolver problemas de almacenamiento, rendimiento e integridad.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../index.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

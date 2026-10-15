@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mv8q1nhv-crwe8tmby">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>Repaso: Estructura de Datos: Bases de Datos | 3. Estructura de Datos: Bases de Datos</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mv8q1nhv-crwe8tmby" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-las-bases-de-datos-como-estructur.html" class="no-ch">1. Fundamentos de las bases de datos como estructura de datos</a>
+</li>
+<li> <a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" class="no-ch">2. Organización y representación de datos en bases de datos</a>
+</li>
+<li> <a href="../html/3-modelos-de-bases-de-datos-y-su-relacion-con-las-.html" class="no-ch">3. Modelos de bases de datos y su relación con las estructuras de datos</a>
+</li>
+<li> <a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" class="no-ch">4. Operaciones fundamentales sobre bases de datos</a>
+</li>
+<li> <a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" class="no-ch">5. Implementación de bases de datos con SQLite y Python</a>
+</li>
+<li> <a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" class="no-ch">6. Aplicaciones prácticas y optimización de bases de datos</a>
+</li>
+<li class="active"> <a href="../html/repaso-estructura-de-datos-bases-de-datos.html" class="active no-ch">Repaso: Estructura de Datos: Bases de Datos</a>
+</li>
+</ul>
+</nav><main id="page-mv8q1nhv-crwe8tmby" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">3. Estructura de Datos: Bases de Datos</p></div>
+<div class="page-header"><h1 class="page-title">Repaso: Estructura de Datos: Bases de Datos</h1></div>
+</header><div id="page-content-page-mv8q1nhv-crwe8tmby" class="page-content">
+<article id="block-mv8rve81-qcb9hcruz" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Repaso</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1792022406336-w2jrtye74" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1792022406336-w2jrtye74&quot;}">
+<div class="exe-text-template">
+    <div id="juego-relacionar-bd" style="font-family: Arial,Helvetica,sans-serif; color: #1f2937; line-height: 1.6; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 22px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 13px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Actividad interactiva</div>
+<h2 style="color: #ffffff; font-size: 27px; margin: 0 0 10px;">Juego de relacionar: Bases de datos como estructura de datos</h2>
+<p style="color: #ffffff; margin: 0;">Relaciona cada definición con el concepto correcto, aplicando lo aprendido en los seis subtemas.</p>
+</div>
+<!-- INSTRUCCIONES -->
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 9px; margin-bottom: 22px;">
+<h3 style="color: #1d4ed8; margin: 0 0 10px; font-size: 21px;">Instrucciones del juego</h3>
+<p style="margin: 0 0 10px;">Lee cada definición y selecciona el concepto que le corresponde utilizando el menú desplegable.</p>
+<ul style="padding-left: 23px; margin: 0;">
+<li>El juego contiene <strong>10 relaciones</strong>.</li>
+<li>Cada relación correcta equivale a <strong>1 punto</strong>.</li>
+<li>La puntuación máxima es de <strong>10 puntos</strong>.</li>
+<li>Puedes realizar <strong>intentos ilimitados</strong>.</li>
+<li>Al finalizar, podrás revisar tus respuestas y repetir la actividad.</li>
+</ul>
+</div>
+<!-- MARCADORES -->
+<div style="display: flex; flex-wrap: wrap; gap: 13px; margin-bottom: 22px;">
+<div style="flex: 1 1 170px; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 9px; padding: 16px; text-align: center;">
+<div style="font-size: 13px; color: #047857; font-weight: bold;">Puntuación</div>
+<div id="bd-puntuacion" style="font-size: 29px; font-weight: bold; color: #047857;" aria-live="polite">0 / 10</div>
+</div>
+<div style="flex: 1 1 170px; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 9px; padding: 16px; text-align: center;">
+<div style="font-size: 13px; color: #1d4ed8; font-weight: bold;">Intento actual</div>
+<div id="bd-intento" style="font-size: 29px; font-weight: bold; color: #1d4ed8;">1</div>
+</div>
+<div style="flex: 1 1 170px; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 9px; padding: 16px; text-align: center;">
+<div style="font-size: 13px; color: #92400e; font-weight: bold;">Relaciones respondidas</div>
+<div id="bd-progreso" style="font-size: 29px; font-weight: bold; color: #92400e;">0 / 10</div>
+</div>
+</div>
+<!-- BARRA DE PROGRESO -->
+<div style="background: #E5E7EB; border-radius: 10px; height: 12px; overflow: hidden; margin-bottom: 24px;">
+<div id="bd-barra" style="background: #10B981; width: 0%; height: 100%; border-radius: 10px; transition: width .25s ease;"></div>
+</div>
+<!-- ELEMENTOS DEL JUEGO -->
+<div id="bd-preguntas"></div>
+<!-- ACCIONES -->
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0;"><button id="bd-verificar" type="button" style="background: #2563EB; color: #ffffff; border: 0; border-radius: 8px; padding: 14px 22px; font-size: 16px; font-weight: bold; cursor: pointer; flex: 1 1 210px;"> Verificar respuestas </button> <button id="bd-reintentar" type="button" style="background: #10B981; color: #ffffff; border: 0; border-radius: 8px; padding: 14px 22px; font-size: 16px; font-weight: bold; cursor: pointer; flex: 1 1 210px;"> Nuevo intento </button></div>
+<!-- RESULTADO -->
+<div id="bd-resultado" role="status" aria-live="polite" style="display: none; border-radius: 9px; padding: 22px 24px; margin-bottom: 22px;"></div>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 24px 28px; border-radius: 10px; margin-top: 26px;">
+<h3 style="color: #fbbf24; margin: 0 0 11px; font-size: 21px;">Propósito de la actividad</h3>
+<p style="color: #ffffff; margin: 0;">Fortalecer la comprensión de los fundamentos de las bases de datos, las tablas y claves primarias, los modelos de organización, las operaciones CRUD, la integración de SQLite con Python y los mecanismos de optimización e integridad de la información.</p>
+</div>
+</div>
+<p>
+<script>
+(function () {
+  "use strict";
+
+  var raiz = document.getElementById("juego-relacionar-bd");
+  if (!raiz || raiz.getAttribute("data-inicializado") === "si") {
+    return;
+  }
+  raiz.setAttribute("data-inicializado", "si");
+
+  var preguntas = [
+    {
+      id: 1,
+      texto: "Conjunto organizado de información que permite almacenar, consultar, modificar y relacionar datos de manera persistente.",
+      respuesta: "Base de datos"
+    },
+    {
+      id: 2,
+      texto: "Estructura del modelo relacional que organiza la información mediante filas y columnas.",
+      respuesta: "Tabla"
+    },
+    {
+      id: 3,
+      texto: "Campo o conjunto de campos que permite identificar de manera única cada registro de una tabla.",
+      respuesta: "Clave primaria"
+    },
+    {
+      id: 4,
+      texto: "Modelo de base de datos que organiza los registros mediante relaciones padre-hijo, semejantes a una estructura de árbol.",
+      respuesta: "Modelo jerárquico"
+    },
+    {
+      id: 5,
+      texto: "Modelo de base de datos que organiza la información mediante tablas relacionadas y permite realizar consultas utilizando SQL.",
+      respuesta: "Modelo relacional"
+    },
+    {
+      id: 6,
+      texto: "Conjunto de operaciones que permite crear, leer, actualizar y eliminar registros almacenados.",
+      respuesta: "CRUD"
+    },
+    {
+      id: 7,
+      texto: "Instrucción SQL utilizada para recuperar registros de una tabla, aplicando condiciones y filtros cuando sea necesario.",
+      respuesta: "SELECT"
+    },
+    {
+      id: 8,
+      texto: "Módulo de la biblioteca estándar de Python que permite establecer conexiones y ejecutar instrucciones sobre bases de datos SQLite.",
+      respuesta: "sqlite3"
+    },
+    {
+      id: 9,
+      texto: "Estructura auxiliar de una base de datos que puede mejorar la eficiencia de las búsquedas sobre determinados campos.",
+      respuesta: "Índice"
+    },
+    {
+      id: 10,
+      texto: "Mecanismo que permite agrupar operaciones relacionadas y confirmar sus cambios o revertirlos cuando se produce un error.",
+      respuesta: "Transacción"
+    }
+  ];
+
+  var conceptos = preguntas.map(function (pregunta) {
+    return pregunta.respuesta;
+  });
+
+  var intento = 1;
+  var verificado = false;
+
+  var contenedor = raiz.querySelector("#bd-preguntas");
+  var indicadorPuntuacion = raiz.querySelector("#bd-puntuacion");
+  var indicadorIntento = raiz.querySelector("#bd-intento");
+  var indicadorProgreso = raiz.querySelector("#bd-progreso");
+  var barra = raiz.querySelector("#bd-barra");
+  var resultado = raiz.querySelector("#bd-resultado");
+  var botonVerificar = raiz.querySelector("#bd-verificar");
+  var botonReintentar = raiz.querySelector("#bd-reintentar");
+
+  function mezclar(elementos) {
+    var copia = elementos.slice();
+
+    for (var i = copia.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temporal = copia[i];
+      copia[i] = copia[j];
+      copia[j] = temporal;
+    }
+
+    return copia;
+  }
+
+  function crearElemento(etiqueta, contenido) {
+    var elemento = document.createElement(etiqueta);
+    elemento.textContent = contenido;
+    return elemento;
+  }
+
+  function obtenerSelects() {
+    return contenedor.querySelectorAll("select[data-respuesta]");
+  }
+
+  function actualizarProgreso() {
+    var selects = obtenerSelects();
+    var respondidas = 0;
+
+    for (var i = 0; i < selects.length; i++) {
+      if (selects[i].value !== "") {
+        respondidas++;
+      }
+    }
+
+    indicadorProgreso.textContent = respondidas + " / 10";
+    barra.style.width = (respondidas * 10) + "%";
+  }
+
+  function construirJuego() {
+    contenedor.innerHTML = "";
+    resultado.style.display = "none";
+    resultado.textContent = "";
+    indicadorPuntuacion.textContent = "0 / 10";
+    indicadorIntento.textContent = String(intento);
+    verificado = false;
+    botonVerificar.disabled = false;
+    botonVerificar.style.opacity = "1";
+    botonVerificar.style.cursor = "pointer";
+
+    var opciones = mezclar(conceptos);
+
+    preguntas.forEach(function (pregunta, indice) {
+      var tarjeta = document.createElement("div");
+      tarjeta.style.cssText =
+        "background:#FFFFFF;" +
+        "border:1px solid #E5E7EB;" +
+        "border-left:5px solid #3B82F6;" +
+        "border-radius:9px;" +
+        "padding:19px 21px;" +
+        "margin-bottom:13px;";
+
+      var encabezado = document.createElement("div");
+      encabezado.style.cssText =
+        "display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;";
+
+      var numero = crearElemento("span", String(indice + 1));
+      numero.style.cssText =
+        "display:inline-flex;align-items:center;justify-content:center;" +
+        "background:#3B82F6;color:#FFFFFF;" +
+        "border-radius:7px;width:34px;height:34px;" +
+        "min-width:34px;font-weight:bold;";
+
+      var descripcion = crearElemento("div", pregunta.texto);
+      descripcion.style.cssText =
+        "flex:1;font-size:15px;font-weight:500;";
+
+      encabezado.appendChild(numero);
+      encabezado.appendChild(descripcion);
+      tarjeta.appendChild(encabezado);
+
+      var etiqueta = crearElemento("label", "Selecciona el concepto correcto:");
+      etiqueta.setAttribute("for", "bd-relacion-" + pregunta.id);
+      etiqueta.style.cssText =
+        "display:block;font-size:13px;color:#4B5563;" +
+        "font-weight:bold;margin-bottom:7px;";
+
+      tarjeta.appendChild(etiqueta);
+
+      var selector = document.createElement("select");
+      selector.id = "bd-relacion-" + pregunta.id;
+      selector.setAttribute("data-respuesta", pregunta.respuesta);
+      selector.style.cssText =
+        "width:100%;box-sizing:border-box;" +
+        "background:#F9FAFB;color:#1F2937;" +
+        "border:1px solid #CBD5E1;border-radius:7px;" +
+        "padding:12px;font-size:15px;cursor:pointer;";
+
+      var inicial = document.createElement("option");
+      inicial.value = "";
+      inicial.textContent = "-- Selecciona una respuesta --";
+      selector.appendChild(inicial);
+
+      opciones.forEach(function (concepto) {
+        var opcion = document.createElement("option");
+        opcion.value = concepto;
+        opcion.textContent = concepto;
+        selector.appendChild(opcion);
+      });
+
+      selector.addEventListener("change", actualizarProgreso);
+      tarjeta.appendChild(selector);
+
+      var retroalimentacion = document.createElement("div");
+      retroalimentacion.className = "bd-retroalimentacion";
+      retroalimentacion.style.cssText =
+        "display:none;margin-top:12px;padding:11px 13px;" +
+        "border-radius:7px;font-size:14px;";
+
+      tarjeta.appendChild(retroalimentacion);
+      contenedor.appendChild(tarjeta);
+    });
+
+    actualizarProgreso();
+  }
+
+  function verificarRespuestas() {
+    if (verificado) {
+      return;
+    }
+
+    var selects = obtenerSelects();
+    var correctas = 0;
+    var respondidas = 0;
+
+    for (var i = 0; i < selects.length; i++) {
+      if (selects[i].value !== "") {
+        respondidas++;
+      }
+    }
+
+    if (respondidas < preguntas.length) {
+      resultado.style.display = "block";
+      resultado.style.background = "#FFFBEB";
+      resultado.style.border = "1px solid #FDE68A";
+      resultado.style.color = "#92400E";
+      resultado.textContent =
+        "Debes responder las 10 relaciones antes de verificar. " +
+        "Actualmente has respondido " + respondidas + " de 10.";
+      resultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+
+    for (var j = 0; j < selects.length; j++) {
+      var selector = selects[j];
+      var respuestaCorrecta = selector.getAttribute("data-respuesta");
+      var esCorrecta = selector.value === respuestaCorrecta;
+      var tarjeta = selector.parentNode;
+      var comentario = tarjeta.querySelector(".bd-retroalimentacion");
+
+      selector.disabled = true;
+      comentario.style.display = "block";
+
+      if (esCorrecta) {
+        correctas++;
+        tarjeta.style.borderLeftColor = "#10B981";
+        selector.style.borderColor = "#10B981";
+        selector.style.background = "#ECFDF5";
+        comentario.style.background = "#ECFDF5";
+        comentario.style.color = "#047857";
+        comentario.textContent = "✓ Correcto. Has relacionado adecuadamente el concepto.";
+      } else {
+        tarjeta.style.borderLeftColor = "#EF4444";
+        selector.style.borderColor = "#EF4444";
+        selector.style.background = "#FEF2F2";
+        comentario.style.background = "#FEF2F2";
+        comentario.style.color = "#B91C1C";
+        comentario.textContent =
+          "✗ Incorrecto. La respuesta correcta es: " + respuestaCorrecta + ".";
+      }
+    }
+
+    verificado = true;
+    indicadorPuntuacion.textContent = correctas + " / 10";
+
+    botonVerificar.disabled = true;
+    botonVerificar.style.opacity = "0.55";
+    botonVerificar.style.cursor = "not-allowed";
+
+    resultado.style.display = "block";
+
+    if (correctas === 10) {
+      resultado.style.background = "#ECFDF5";
+      resultado.style.border = "1px solid #A7F3D0";
+      resultado.style.color = "#047857";
+      resultado.innerHTML =
+        "<h3 style='margin:0 0 9px;color:#047857;'>¡Excelente resultado!</h3>" +
+        "<p style='margin:0;'>Has obtenido <strong>10 de 10 puntos</strong>. " +
+        "Todas las relaciones son correctas.</p>";
+    } else if (correctas >= 7) {
+      resultado.style.background = "#EFF6FF";
+      resultado.style.border = "1px solid #BFDBFE";
+      resultado.style.color = "#1D4ED8";
+      resultado.innerHTML =
+        "<h3 style='margin:0 0 9px;color:#1D4ED8;'>¡Buen trabajo!</h3>" +
+        "<p style='margin:0;'>Has obtenido <strong>" + correctas +
+        " de 10 puntos</strong>. Revisa las relaciones incorrectas " +
+        "y realiza otro intento para mejorar.</p>";
+    } else {
+      resultado.style.background = "#FFFBEB";
+      resultado.style.border = "1px solid #FDE68A";
+      resultado.style.color = "#92400E";
+      resultado.innerHTML =
+        "<h3 style='margin:0 0 9px;color:#92400E;'>Continúa practicando</h3>" +
+        "<p style='margin:0;'>Has obtenido <strong>" + correctas +
+        " de 10 puntos</strong>. Revisa las respuestas correctas " +
+        "y vuelve a intentarlo.</p>";
+    }
+
+    resultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  botonVerificar.addEventListener("click", verificarRespuestas);
+
+  botonReintentar.addEventListener("click", function () {
+    intento++;
+    construirJuego();
+    raiz.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  construirJuego();
+})();
+</script>
+</p>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<span class="nav-button nav-button-right" aria-hidden="true"><span>Siguiente</span></span>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

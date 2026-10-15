@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mv8q0r7r-q3eisiug8">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>3. Modelos de bases de datos y su relación con las estructuras de datos | 3. Estructura de Datos: Bases de Datos</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mv8q0r7r-q3eisiug8" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-las-bases-de-datos-como-estructur.html" class="no-ch">1. Fundamentos de las bases de datos como estructura de datos</a>
+</li>
+<li> <a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" class="no-ch">2. Organización y representación de datos en bases de datos</a>
+</li>
+<li class="active"> <a href="../html/3-modelos-de-bases-de-datos-y-su-relacion-con-las-.html" class="active no-ch">3. Modelos de bases de datos y su relación con las estructuras de datos</a>
+</li>
+<li> <a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" class="no-ch">4. Operaciones fundamentales sobre bases de datos</a>
+</li>
+<li> <a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" class="no-ch">5. Implementación de bases de datos con SQLite y Python</a>
+</li>
+<li> <a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" class="no-ch">6. Aplicaciones prácticas y optimización de bases de datos</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-bases-de-datos.html" class="no-ch">Repaso: Estructura de Datos: Bases de Datos</a>
+</li>
+</ul>
+</nav><main id="page-mv8q0r7r-q3eisiug8" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">3. Estructura de Datos: Bases de Datos</p></div>
+<div class="page-header"><h1 class="page-title">3. Modelos de bases de datos y su relación con las estructuras de datos</h1></div>
+</header><div id="page-content-page-mv8q0r7r-q3eisiug8" class="page-content">
+<article id="block-mv8qs56t-vxtu3qa6f" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1792020575044-5dmwq1hpo" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1792020575044-5dmwq1hpo&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial,Helvetica,sans-serif; color: #1f2937; line-height: 1.7; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO -->
+<div style="background: #3B82F6; color: #ffffff; padding: 28px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 14px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Bases de datos como estructura de datos</div>
+<h2 style="margin: 0 0 12px; color: #ffffff; font-size: 29px;">Modelos de bases de datos y su relación con las estructuras de datos</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Comprender los modelos jerárquico, de red, relacional y NoSQL, identificando su relación con árboles, grafos, tablas, listas y diccionarios.</p>
+</div>
+<!-- OBJETIVO -->
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 25px; border-radius: 9px; margin-bottom: 25px;">
+<h3 style="color: #1d4ed8; margin: 0 0 12px; font-size: 21px;">Objetivo de aprendizaje</h3>
+<p style="margin: 0;">Analizar los principales modelos de bases de datos y su relación con las estructuras de datos, identificando las características de los modelos jerárquico, de red, relacional y NoSQL, para comprender cómo se organiza, almacena y relaciona la información, así como seleccionar el modelo más adecuado según las necesidades de un sistema informático.</p>
+</div>
+<!-- INTRODUCCIÓN -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 22px 25px; border-radius: 9px; margin-bottom: 30px;">
+<h3 style="margin: 0 0 14px; color: #1f2937; font-size: 22px;">Introducción</h3>
+<p>Las bases de datos permiten almacenar y administrar información de manera organizada. Sin embargo, no todas utilizan los mismos mecanismos para representar los datos ni establecen las mismas formas de relación entre sus elementos.</p>
+<p>En el estudio de las estructuras de datos se analizan mecanismos como listas, árboles, grafos, diccionarios y tablas hash. Estas estructuras permiten organizar información siguiendo diferentes criterios y ofrecen características particulares para realizar operaciones de búsqueda, inserción, modificación y eliminación.</p>
+<p>Los modelos de bases de datos aplican principios relacionados con estas estructuras para establecer cómo se representan los registros y sus relaciones.</p>
+<p>Por ejemplo, una universidad puede organizar sus facultades y carreras mediante una estructura jerárquica, representar conexiones entre usuarios mediante un grafo o administrar estudiantes y asignaturas mediante tablas relacionadas.</p>
+<p style="margin-bottom: 0;">Desde la perspectiva de las estructuras de datos, comprender estos modelos permite identificar cómo los conceptos estudiados anteriormente se utilizan en sistemas que necesitan almacenar y procesar información de manera persistente.</p>
+</div>
+<!-- SECCIÓN 3.1 -->
+<section style="margin-bottom: 36px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 10px;">3.1. Concepto de modelo de base de datos</h3>
+<div style="background: #EFF6FF; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 8px; margin: 20px 0;">
+<p style="margin: 0; font-size: 17px;">Un <strong>modelo de base de datos</strong> es un conjunto de conceptos, reglas y estructuras que establece cómo se representa, organiza, relaciona y manipula la información dentro de una base de datos.</p>
+</div>
+<p>Su propósito consiste en proporcionar una forma coherente de representar datos para facilitar su almacenamiento, consulta y administración.</p>
+<p>El modelo determina cómo se describen los elementos de información, qué relaciones pueden establecerse entre ellos y qué operaciones permite realizar el sistema.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Elementos fundamentales</h4>
+<div style="overflow-x: auto; margin: 20px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 650px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Elemento</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Descripción</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #FFFFFF;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Entidad</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Elemento sobre el que se almacena información.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Estudiante</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Atributo</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Característica que describe una entidad.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nombre, edad, carrera</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Registro</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Conjunto de valores asociados a una entidad.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Datos de un estudiante</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Identificador</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Valor que distingue un registro.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Código de estudiante</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Relación</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Asociación entre elementos.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Estudiante y asignatura</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Restricción</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Regla que regula la validez de los datos.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Identificador único</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Operación</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Acción realizada sobre los datos.</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Insertar, consultar, actualizar</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Importancia de los modelos de bases de datos</h4>
+<ul style="padding-left: 25px;">
+<li>Representar adecuadamente las entidades de un sistema.</li>
+<li>Establecer relaciones entre diferentes conjuntos de datos.</li>
+<li>Facilitar la recuperación de información.</li>
+<li>Reducir problemas de organización y duplicación innecesaria.</li>
+<li>Definir mecanismos de identificación de registros.</li>
+<li>Favorecer el mantenimiento y crecimiento de las aplicaciones.</li>
+</ul>
+<h4 style="color: #1d4ed8; font-size: 20px;">Clasificación general de los modelos</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 225px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px;"><strong style="color: #1d4ed8;">Modelo jerárquico</strong>
+<p style="margin: 8px 0 0;">Organiza registros mediante relaciones padre-hijo, semejantes a un árbol.</p>
+</div>
+<div style="flex: 1 1 225px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;"><strong style="color: #047857;">Modelo de red</strong>
+<p style="margin: 8px 0 0;">Representa registros interconectados mediante múltiples relaciones.</p>
+</div>
+<div style="flex: 1 1 225px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 9px;"><strong style="color: #92400e;">Modelo relacional</strong>
+<p style="margin: 8px 0 0;">Organiza información utilizando tablas y relaciones entre registros.</p>
+</div>
+<div style="flex: 1 1 225px; background: #F3F4F6; border: 1px solid #D1D5DB; padding: 20px; border-radius: 9px;"><strong style="color: #374151;">Modelos NoSQL</strong>
+<p style="margin: 8px 0 0;">Incluyen documentos, clave-valor, columnas amplias y grafos.</p>
+</div>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 17px 21px; border-radius: 8px;">
+<p style="margin: 0;"><strong>Importante:</strong> el modelo lógico de una base de datos no es lo mismo que las estructuras físicas utilizadas internamente por el gestor. Una base de datos relacional puede utilizar árboles B para implementar índices, aunque su modelo lógico esté basado en tablas.</p>
+</div>
+</section>
+<!-- SECCIÓN 3.2 -->
+<section style="margin-bottom: 36px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 10px;">3.2. Modelo jerárquico y su relación con los árboles</h3>
+<p>El <strong>modelo jerárquico</strong> organiza los datos mediante una estructura de niveles, donde los registros se relacionan siguiendo un esquema padre-hijo.</p>
+<p>Su organización se asemeja a un árbol, una estructura de datos no lineal formada por nodos conectados jerárquicamente.</p>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px; margin: 20px 0;"><strong style="color: #047857;">Características principales</strong>
+<ul style="padding-left: 23px; margin-bottom: 0;">
+<li>Organiza la información en diferentes niveles.</li>
+<li>Utiliza relaciones padre-hijo.</li>
+<li>Posee una estructura jerárquica definida.</li>
+<li>Permite recorrer registros siguiendo rutas establecidas.</li>
+<li>Resulta apropiado para dependencias jerárquicas claras.</li>
+<li>Presenta limitaciones para relaciones muchos a muchos.</li>
+</ul>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: organización universitaria</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; text-align: center; margin: 20px 0;">
+<div style="display: inline-block; background: #3B82F6; color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold;">Universidad</div>
+<div style="color: #64748b; font-size: 24px;">↓</div>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+<div style="flex: 1 1 220px; max-width: 350px;">
+<div style="background: #10B981; color: white; padding: 12px; border-radius: 7px; font-weight: bold;">Facultad de Tecnología</div>
+<div style="color: #64748b; font-size: 22px;">↓</div>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 12px; border-radius: 7px; margin-bottom: 8px;">Desarrollo de Software</div>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 12px; border-radius: 7px;">Redes Informáticas</div>
+</div>
+<div style="flex: 1 1 220px; max-width: 350px;">
+<div style="background: #10B981; color: white; padding: 12px; border-radius: 7px; font-weight: bold;">Facultad de Administración</div>
+<div style="color: #64748b; font-size: 22px;">↓</div>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 12px; border-radius: 7px; margin-bottom: 8px;">Contabilidad</div>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 12px; border-radius: 7px;">Administración de Empresas</div>
+</div>
+</div>
+<p style="font-size: 13px; color: #6b7280; margin: 15px 0 0;">Representación conceptual de una estructura jerárquica.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con la estructura de datos árbol</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 520px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Concepto en árboles</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Equivalente jerárquico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Raíz</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Registro principal</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Nodo</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Registro de información</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Padre</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Registro superior</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Hijo</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Registro subordinado</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Nivel</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Posición jerárquica</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Recorrido</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Navegación entre registros</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo en Python</h4>
+<p>Una estructura jerárquica puede representarse mediante diccionarios y listas anidadas.</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,Monaco,monospace; font-size: 14px;"><code>universidad = {
+    &quot;nombre&quot;: &quot;Universidad Central&quot;,
+    &quot;facultades&quot;: [
+        {
+            &quot;nombre&quot;: &quot;Tecnología&quot;,
+            &quot;carreras&quot;: [
+                &quot;Desarrollo de Software&quot;,
+                &quot;Redes Informáticas&quot;
+            ]
+        },
+        {
+            &quot;nombre&quot;: &quot;Administración&quot;,
+            &quot;carreras&quot;: [
+                &quot;Contabilidad&quot;,
+                &quot;Administración de Empresas&quot;
+            ]
+        }
+    ]
+}</code></pre>
+<p>Para recorrer la estructura:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,Monaco,monospace; font-size: 14px;"><code>for facultad in universidad[&quot;facultades&quot;]:
+    print(&quot;Facultad:&quot;, facultad[&quot;nombre&quot;])
+
+    for carrera in facultad[&quot;carreras&quot;]:
+        print(&quot; -&quot;, carrera)</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 17px 20px; border-radius: 8px; margin: 18px 0;"><strong style="color: #047857;">Resultado esperado</strong>
+<pre style="white-space: pre-wrap; margin: 10px 0 0; font-family: Consolas,monospace; font-size: 14px;">Facultad: Tecnología
+ - Desarrollo de Software
+ - Redes Informáticas
+Facultad: Administración
+ - Contabilidad
+ - Administración de Empresas</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Explicación del código</h4>
+<p>La variable <code>universidad</code> contiene un diccionario que representa la entidad principal. La clave <code>facultades</code> almacena una lista de diccionarios, cada uno con su nombre y sus carreras.</p>
+<p>El primer ciclo <code>for</code> recorre las facultades y el segundo ciclo recorre las carreras correspondientes. Esto demuestra cómo combinar listas y diccionarios para representar una jerarquía.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ventajas y limitaciones</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 18px 0;">
+<div style="flex: 1 1 280px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px;"><strong style="color: #047857;">Ventajas</strong>
+<ul style="padding-left: 20px;">
+<li>Organización clara para jerarquías.</li>
+<li>Navegación mediante rutas conocidas.</li>
+<li>Representación natural de dependencias.</li>
+</ul>
+</div>
+<div style="flex: 1 1 280px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 8px;"><strong style="color: #92400e;">Limitaciones</strong>
+<ul style="padding-left: 20px;">
+<li>Dificultad con relaciones complejas.</li>
+<li>Dependencia de la jerarquía definida.</li>
+<li>Menor flexibilidad para relaciones muchos a muchos.</li>
+</ul>
+</div>
+</div>
+<p><strong>Aplicaciones:</strong> organigramas, clasificaciones, categorías y estructuras organizativas. Estos ejemplos ilustran relaciones jerárquicas, aunque no necesariamente utilizan un gestor de bases de datos jerárquico.</p>
+</section>
+<!-- SECCIÓN 3.3 -->
+<section style="margin-bottom: 36px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 10px;">3.3. Modelo de red y su relación con los grafos</h3>
+<p>El <strong>modelo de red</strong> organiza información mediante registros conectados a través de relaciones que permiten establecer múltiples asociaciones entre diferentes elementos.</p>
+<p>A diferencia del modelo jerárquico, un registro puede participar en varias relaciones y no necesita depender de un único registro padre.</p>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px; margin: 18px 0;"><strong style="color: #1d4ed8;">Características principales</strong>
+<ul style="padding-left: 23px; margin-bottom: 0;">
+<li>Representa múltiples relaciones entre registros.</li>
+<li>No depende de una única jerarquía.</li>
+<li>Facilita conexiones complejas.</li>
+<li>Admite asociaciones entre conjuntos de información.</li>
+<li>Puede requerir mecanismos de navegación más complejos.</li>
+</ul>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: estudiantes y asignaturas</h4>
+<p>Un estudiante puede inscribirse en varias asignaturas y cada asignatura puede tener varios estudiantes. Esto representa relaciones múltiples.</p>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; margin: 20px 0;"><svg viewbox="0 0 620 280" style="width: 100%; max-width: 620px; height: auto; display: block; margin: auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grafo de relaciones entre estudiantes y asignaturas"> <line x1="168" y1="48" x2="416" y2="48" stroke="#64748B" stroke-width="3"></line> <line x1="168" y1="48" x2="416" y2="138" stroke="#64748B" stroke-width="3"></line> <line x1="168" y1="138" x2="416" y2="138" stroke="#64748B" stroke-width="3"></line> <line x1="168" y1="138" x2="416" y2="228" stroke="#64748B" stroke-width="3"></line> <line x1="168" y1="228" x2="416" y2="48" stroke="#64748B" stroke-width="3"></line> <rect x="20" y="26" width="148" height="44" rx="8" fill="#3B82F6"></rect> <rect x="20" y="116" width="148" height="44" rx="8" fill="#3B82F6"></rect> <rect x="20" y="206" width="148" height="44" rx="8" fill="#3B82F6"></rect> <text x="94" y="53" fill="white" text-anchor="middle" font-size="15">Ana</text> <text x="94" y="143" fill="white" text-anchor="middle" font-size="15">Carlos</text> <text x="94" y="233" fill="white" text-anchor="middle" font-size="15">María</text> <rect x="416" y="26" width="183" height="44" rx="8" fill="#10B981"></rect> <rect x="416" y="116" width="183" height="44" rx="8" fill="#10B981"></rect> <rect x="416" y="206" width="183" height="44" rx="8" fill="#10B981"></rect> <text x="507" y="53" fill="white" text-anchor="middle" font-size="14">Programación</text> <text x="507" y="143" fill="white" text-anchor="middle" font-size="14">Bases de Datos</text> <text x="507" y="233" fill="white" text-anchor="middle" font-size="14">Redes</text> </svg>
+<p style="text-align: center; color: #6b7280; font-size: 13px; margin: 12px 0 0;">Las conexiones representan matrículas entre estudiantes y asignaturas.</p>
+</div>
+<p>Ana está relacionada con Programación y Bases de Datos; Carlos con Bases de Datos y Redes; y María con Programación.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con la estructura de datos grafo</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 540px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Concepto</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Vértice</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Estudiante o asignatura</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Arista</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Relación de matrícula</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Grafo</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Conjunto de elementos conectados</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Recorrido</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Exploración de relaciones</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Adyacencia</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Elementos directamente relacionados</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>matriculas = {
+    &quot;Ana&quot;: [
+        &quot;Programación&quot;,
+        &quot;Bases de Datos&quot;
+    ],
+    &quot;Carlos&quot;: [
+        &quot;Bases de Datos&quot;,
+        &quot;Redes&quot;
+    ],
+    &quot;María&quot;: [
+        &quot;Programación&quot;
+    ]
+}
+
+print(matriculas[&quot;Ana&quot;])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 17px 20px; border-radius: 8px; margin: 16px 0;"><strong style="color: #047857;">Resultado</strong>
+<pre style="white-space: pre-wrap; margin: 8px 0 0; font-family: Consolas,monospace; font-size: 14px;">['Programación', 'Bases de Datos']</pre>
+</div>
+<p>Para recorrer todas las relaciones:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>for estudiante, asignaturas in matriculas.items():
+    print(&quot;Estudiante:&quot;, estudiante)
+
+    for asignatura in asignaturas:
+        print(&quot; -&quot;, asignatura)</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 17px 20px; border-radius: 8px; margin: 16px 0;"><strong style="color: #047857;">Resultado esperado</strong>
+<pre style="white-space: pre-wrap; margin: 8px 0 0; font-family: Consolas,monospace; font-size: 14px;">Estudiante: Ana
+ - Programación
+ - Bases de Datos
+Estudiante: Carlos
+ - Bases de Datos
+ - Redes
+Estudiante: María
+ - Programación</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Explicación del código</h4>
+<p>El diccionario <code>matriculas</code> utiliza estudiantes como claves y listas de asignaturas como valores. El método <code>items()</code> permite recorrer ambos componentes.</p>
+<p>Esta representación corresponde a una forma sencilla de lista de adyacencia utilizada para organizar grafos.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+<div style="flex: 1 1 280px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px;"><strong style="color: #047857;">Ventajas</strong>
+<ul style="padding-left: 22px;">
+<li>Representa múltiples relaciones.</li>
+<li>Ofrece mayor flexibilidad que una jerarquía rígida.</li>
+<li>Permite gestionar información interconectada.</li>
+</ul>
+</div>
+<div style="flex: 1 1 280px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 8px;"><strong style="color: #92400e;">Limitaciones</strong>
+<ul style="padding-left: 22px;">
+<li>El diseño puede resultar complejo.</li>
+<li>La navegación puede requerir conocimiento previo de las relaciones.</li>
+<li>Algunos recorridos pueden ser extensos.</li>
+</ul>
+</div>
+</div>
+<p><strong>Aplicaciones:</strong> redes de telecomunicaciones, sistemas de transporte y sistemas que administran conexiones entre entidades. Estas necesidades también pueden atenderse con bases relacionales o de grafos.</p>
+</section>
+<!-- SECCIÓN 3.4 -->
+<section style="margin-bottom: 36px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 10px;">3.4. Modelo relacional y organización mediante tablas</h3>
+<p>El <strong>modelo relacional</strong> organiza la información mediante relaciones que habitualmente se representan en forma de tablas.</p>
+<p>Cada tabla contiene filas y columnas que permiten describir conjuntos de datos relacionados. Su fundamento se encuentra en el modelo propuesto por Edgar F. Codd en 1970.</p>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px; margin: 18px 0;"><strong style="color: #1d4ed8;">Características principales</strong>
+<ul style="padding-left: 22px; margin-bottom: 0;">
+<li>Organización mediante tablas.</li>
+<li>Uso de atributos para describir entidades.</li>
+<li>Identificación mediante claves.</li>
+<li>Relaciones establecidas por claves foráneas.</li>
+<li>Consultas y operaciones mediante SQL.</li>
+<li>Restricciones de integridad.</li>
+</ul>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: sistema académico</h4>
+<div style="overflow-x: auto; margin: 18px 0;">
+<p><strong>Tabla estudiantes</strong></p>
+<table style="width: 100%; border-collapse: collapse; min-width: 450px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">id_estudiante</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">nombre</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">carrera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Redes Informáticas</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">María</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="overflow-x: auto; margin: 18px 0;">
+<p><strong>Tabla asignaturas</strong></p>
+<table style="width: 100%; border-collapse: collapse; min-width: 350px;">
+<thead>
+<tr style="background: #10B981; color: white;">
+<th style="padding: 11px; border: 1px solid #059669;">id_asignatura</th>
+<th style="padding: 11px; border: 1px solid #059669;">nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Programación</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">102</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Bases de Datos</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">103</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Redes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="overflow-x: auto; margin: 18px 0;">
+<p><strong>Tabla matrículas</strong></p>
+<table style="width: 100%; border-collapse: collapse; min-width: 420px;">
+<thead>
+<tr style="background: #FBBF24; color: #1f2937;">
+<th style="padding: 11px; border: 1px solid #D97706;">id_matricula</th>
+<th style="padding: 11px; border: 1px solid #D97706;">id_estudiante</th>
+<th style="padding: 11px; border: 1px solid #D97706;">id_asignatura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">102</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">103</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">4</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La tabla <code>matriculas</code> establece relaciones entre estudiantes y asignaturas utilizando identificadores. De esta manera, la información puede organizarse sin repetir innecesariamente todos los atributos.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con estructuras tabulares en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [
+    {
+        &quot;id&quot;: 1,
+        &quot;nombre&quot;: &quot;Ana&quot;,
+        &quot;carrera&quot;: &quot;Desarrollo de Software&quot;
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;nombre&quot;: &quot;Carlos&quot;,
+        &quot;carrera&quot;: &quot;Redes Informáticas&quot;
+    },
+    {
+        &quot;id&quot;: 3,
+        &quot;nombre&quot;: &quot;María&quot;,
+        &quot;carrera&quot;: &quot;Desarrollo de Software&quot;
+    }
+]
+
+for estudiante in estudiantes:
+    print(estudiante[&quot;nombre&quot;])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 9px 0 0; font-family: Consolas,monospace;">Ana
+Carlos
+María</pre>
+</div>
+<p>Esta lista de diccionarios representa registros de manera conceptual. Sin embargo, una base de datos relacional ofrece mecanismos adicionales como persistencia, restricciones, relaciones y consultas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Introducción a SQL</h4>
+<p>SQL permite consultar información almacenada en bases de datos relacionales.</p>
+<p><strong>Consultar todos los estudiantes:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 18px 22px; border-radius: 8px; overflow-x: auto;"><code>SELECT *
+FROM estudiantes;</code></pre>
+<p><strong>Seleccionar campos específicos:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 18px 22px; border-radius: 8px; overflow-x: auto;"><code>SELECT nombre, carrera
+FROM estudiantes;</code></pre>
+<p><strong>Filtrar estudiantes por carrera:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 18px 22px; border-radius: 8px; overflow-x: auto;"><code>SELECT nombre
+FROM estudiantes
+WHERE carrera = &#039;Desarrollo de Software&#039;;</code></pre>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin: 20px 0;">
+<p style="margin: 0;"><strong>Importante:</strong> las listas de Python mantienen el orden de sus elementos, mientras que las tablas relacionales no garantizan un orden de filas. Cuando una consulta requiere resultados ordenados, debe utilizarse <code>ORDER BY</code>.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ventajas y limitaciones</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px;">
+<div style="flex: 1 1 280px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px;"><strong style="color: #047857;">Ventajas</strong>
+<ul style="padding-left: 22px;">
+<li>Organización estructurada.</li>
+<li>Relaciones entre entidades.</li>
+<li>Consultas mediante SQL.</li>
+<li>Restricciones de integridad.</li>
+</ul>
+</div>
+<div style="flex: 1 1 280px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 8px;"><strong style="color: #92400e;">Limitaciones</strong>
+<ul style="padding-left: 22px;">
+<li>Requiere diseñar el esquema.</li>
+<li>Algunas estructuras variables son difíciles de modelar.</li>
+<li>Las consultas complejas pueden necesitar optimización.</li>
+<li>Los cambios estructurales pueden requerir migraciones.</li>
+</ul>
+</div>
+</div>
+<p><strong>Aplicaciones:</strong> sistemas académicos, comerciales, bancarios y administrativos. Algunos gestores relacionales son SQLite, PostgreSQL, MySQL y Microsoft SQL Server.</p>
+</section>
+<!-- SECCIÓN 3.5 -->
+<section style="margin-bottom: 36px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 10px;">3.5. Introducción a las bases de datos NoSQL</h3>
+<div style="background: #EFF6FF; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 8px; margin: 18px 0;">
+<p style="margin: 0;"><strong>NoSQL</strong> agrupa diferentes enfoques de bases de datos que no se limitan al modelo relacional tradicional. El término suele interpretarse como <em>Not Only SQL</em>.</p>
+</div>
+<p>Estas tecnologías permiten representar información mediante modelos como documentos, clave-valor, columnas amplias y grafos.</p>
+<p>Según la tecnología seleccionada, pueden facilitar el almacenamiento de información semiestructurada, esquemas flexibles y determinadas cargas de trabajo distribuidas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Características generales</h4>
+<ul style="padding-left: 25px;">
+<li>Representación flexible de información.</li>
+<li>Almacenamiento mediante documentos o pares clave-valor.</li>
+<li>Organización mediante columnas amplias.</li>
+<li>Representación de relaciones utilizando grafos.</li>
+<li>Posibilidad de distribución entre servidores, según el gestor.</li>
+<li>Mecanismos de consulta adaptados al modelo utilizado.</li>
+</ul>
+<h4 style="color: #1d4ed8; font-size: 20px;">Principales familias de bases de datos NoSQL</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 225px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px;"><strong style="color: #1d4ed8;">Clave-valor</strong>
+<p>Organiza información mediante claves asociadas con valores.</p>
+<p style="margin-bottom: 0;"><strong>Ejemplo:</strong> Redis.</p>
+</div>
+<div style="flex: 1 1 225px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;"><strong style="color: #047857;">Documental</strong>
+<p>Utiliza documentos con campos y estructuras anidadas.</p>
+<p style="margin-bottom: 0;"><strong>Ejemplo:</strong> MongoDB.</p>
+</div>
+<div style="flex: 1 1 225px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 9px;"><strong style="color: #92400e;">Columnas amplias</strong>
+<p>Utiliza filas identificadas por claves y columnas agrupadas.</p>
+<p style="margin-bottom: 0;"><strong>Ejemplo:</strong> Apache Cassandra.</p>
+</div>
+<div style="flex: 1 1 225px; background: #F3F4F6; border: 1px solid #D1D5DB; padding: 20px; border-radius: 9px;"><strong style="color: #374151;">Grafos</strong>
+<p>Representa información mediante nodos y relaciones.</p>
+<p style="margin-bottom: 0;"><strong>Ejemplo:</strong> Neo4j.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: catálogo de productos</h4>
+<p>Una tienda comercializa productos de categorías diferentes. Los electrónicos pueden incluir memoria y procesador, mientras que los muebles poseen dimensiones y materiales.</p>
+<p><strong>Documento de producto electrónico:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>{
+    &quot;id&quot;: 101,
+    &quot;nombre&quot;: &quot;Computadora portátil&quot;,
+    &quot;categoria&quot;: &quot;Electrónica&quot;,
+    &quot;caracteristicas&quot;: {
+        &quot;memoria&quot;: &quot;16 GB&quot;,
+        &quot;almacenamiento&quot;: &quot;512 GB&quot;,
+        &quot;procesador&quot;: &quot;Intel Core i5&quot;
+    }
+}</code></pre>
+<p><strong>Documento de mobiliario:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>{
+    &quot;id&quot;: 102,
+    &quot;nombre&quot;: &quot;Escritorio&quot;,
+    &quot;categoria&quot;: &quot;Mobiliario&quot;,
+    &quot;caracteristicas&quot;: {
+        &quot;material&quot;: &quot;Madera&quot;,
+        &quot;ancho_cm&quot;: 120,
+        &quot;alto_cm&quot;: 75
+    }
+}</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;">Ambos documentos contienen información de productos, pero sus atributos son diferentes. El modelo documental permite representar esta variabilidad sin exigir que todos los documentos incluyan exactamente los mismos campos.</p>
+</div>
+</section>
+<!-- SECCIÓN 3.6 -->
+<section style="margin-bottom: 36px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 10px;">3.6. Relación de las bases de datos NoSQL con diccionarios, documentos y grafos</h3>
+<p>Las familias de bases de datos NoSQL presentan relaciones conceptuales con estructuras de datos utilizadas en programación.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Bases de datos clave-valor y diccionarios</h4>
+<p>Una base clave-valor puede compararse conceptualmente con un diccionario de Python.</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>usuarios = {
+    &quot;USR001&quot;: &quot;Ana&quot;,
+    &quot;USR002&quot;: &quot;Carlos&quot;,
+    &quot;USR003&quot;: &quot;María&quot;
+}
+
+print(usuarios[&quot;USR002&quot;])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 15px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Carlos</pre>
+</div>
+<p>Las claves permiten identificar los valores. En una base de datos clave-valor, el sistema gestor añade mecanismos para almacenar, recuperar y administrar la información.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Bases documentales y estructuras anidadas</h4>
+<p>Los documentos pueden contener campos, listas y objetos anidados, de forma semejante a la combinación de diccionarios y listas en Python.</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiante = {
+    &quot;id&quot;: 1,
+    &quot;nombre&quot;: &quot;Ana&quot;,
+    &quot;carrera&quot;: &quot;Desarrollo de Software&quot;,
+    &quot;asignaturas&quot;: [
+        {
+            &quot;codigo&quot;: &quot;PRO101&quot;,
+            &quot;nombre&quot;: &quot;Programación&quot;
+        },
+        {
+            &quot;codigo&quot;: &quot;BD102&quot;,
+            &quot;nombre&quot;: &quot;Bases de Datos&quot;
+        }
+    ]
+}
+
+print(estudiante[&quot;asignaturas&quot;][0][&quot;nombre&quot;])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 15px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Programación</pre>
+</div>
+<p>El acceso se realiza primero a la lista de asignaturas, después al elemento ubicado en la posición cero y finalmente al campo <code>nombre</code>.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Bases de datos de grafos</h4>
+<p>Las bases de grafos representan nodos y relaciones. Resultan útiles cuando las conexiones entre entidades son esenciales para resolver el problema.</p>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; margin: 18px 0;"><svg viewbox="0 0 440 225" xmlns="http://www.w3.org/2000/svg" style="max-width: 440px; width: 100%; height: auto; display: block; margin: auto;" role="img" aria-label="Grafo de relaciones de amistad entre cuatro personas"> <line x1="100" y1="55" x2="340" y2="55" stroke="#64748B" stroke-width="3"></line> <line x1="100" y1="55" x2="100" y2="170" stroke="#64748B" stroke-width="3"></line> <line x1="340" y1="55" x2="340" y2="170" stroke="#64748B" stroke-width="3"></line> <line x1="100" y1="170" x2="340" y2="170" stroke="#64748B" stroke-width="3"></line> <circle cx="100" cy="55" r="40" fill="#3B82F6"></circle> <circle cx="340" cy="55" r="40" fill="#10B981"></circle> <circle cx="100" cy="170" r="40" fill="#10B981"></circle> <circle cx="340" cy="170" r="40" fill="#3B82F6"></circle> <text x="100" y="60" text-anchor="middle" fill="white" font-size="15">Ana</text> <text x="340" y="60" text-anchor="middle" fill="white" font-size="15">Carlos</text> <text x="100" y="175" text-anchor="middle" fill="white" font-size="15">María</text> <text x="340" y="175" text-anchor="middle" fill="white" font-size="15">José</text> </svg>
+<p style="text-align: center; color: #6b7280; font-size: 13px; margin: 12px 0 0;">Los nodos representan personas y las conexiones representan relaciones de amistad.</p>
+</div>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>red_social = {
+    &quot;Ana&quot;: [&quot;Carlos&quot;, &quot;María&quot;],
+    &quot;Carlos&quot;: [&quot;Ana&quot;, &quot;José&quot;],
+    &quot;María&quot;: [&quot;Ana&quot;, &quot;José&quot;],
+    &quot;José&quot;: [&quot;Carlos&quot;, &quot;María&quot;]
+}
+
+print(red_social[&quot;Ana&quot;])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 15px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">['Carlos', 'María']</pre>
+</div>
+<p>El diccionario representa una lista de adyacencia: cada persona está asociada a las personas con las que mantiene una conexión.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Comparación conceptual</h4>
+<div style="overflow-x: auto; margin: 20px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 650px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Modelo NoSQL</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Estructura relacionada</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Representación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Clave-valor</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Diccionarios y tablas hash</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Clave asociada con valor</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Documental</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Diccionarios y listas anidadas</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Documentos estructurados</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Columnas amplias</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Mapas y estructuras agrupadas</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Filas y columnas agrupadas</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Grafos</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Grafos y listas de adyacencia</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Nodos y conexiones</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 17px 21px; border-radius: 8px;">
+<p style="margin: 0;">Estas relaciones son conceptuales. La implementación interna de un gestor NoSQL puede utilizar diferentes estructuras y combinar varios mecanismos de almacenamiento e indexación.</p>
+</div>
+</section>
+<!-- SECCIÓN 3.7 -->
+<section style="margin-bottom: 36px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 10px;">3.7. Comparación de los diferentes modelos de organización de datos</h3>
+<p>La selección de un modelo de base de datos depende de las características de la información y de las necesidades del sistema. Ningún modelo es superior en todos los escenarios.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Comparación general</h4>
+<div style="overflow-x: auto; margin: 20px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 760px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Modelo</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Organización</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Estructura relacionada</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Aplicaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Jerárquico</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Padre-hijo</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Árboles</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Jerarquías definidas</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">De red</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Registros conectados</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Grafos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Relaciones complejas</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Relacional</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Tablas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Relaciones tabulares</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Sistemas administrativos</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Clave-valor</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Pares clave-valor</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Diccionarios, hash</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Sesiones y caché</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Documental</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Documentos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Diccionarios y listas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Catálogos y perfiles</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Columnas amplias</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Filas y columnas agrupadas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Mapas distribuidos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Grandes volúmenes</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Grafos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Nodos y relaciones</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Grafos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Redes sociales</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Criterios para seleccionar un modelo</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 250px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Naturaleza de la información</strong>
+<p style="margin: 8px 0 0;">Identificar si los datos son estructurados, variables o poseen múltiples relaciones.</p>
+</div>
+<div style="flex: 1 1 250px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Tipos de relaciones</strong>
+<p style="margin: 8px 0 0;">Determinar cómo se conectan las entidades y qué relaciones deben representarse.</p>
+</div>
+<div style="flex: 1 1 250px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Operaciones de consulta</strong>
+<p style="margin: 8px 0 0;">Analizar qué información se recuperará y qué consultas serán más frecuentes.</p>
+</div>
+<div style="flex: 1 1 250px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Integridad y consistencia</strong>
+<p style="margin: 8px 0 0;">Establecer restricciones y garantías necesarias para las operaciones.</p>
+</div>
+<div style="flex: 1 1 250px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Volumen y crecimiento</strong>
+<p style="margin: 8px 0 0;">Considerar cantidad de datos, rendimiento y necesidades de escalabilidad.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Caso de análisis: selección de un modelo</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; border-left: 5px solid #3B82F6; padding: 20px; border-radius: 9px; margin-bottom: 14px;"><strong style="color: #1d4ed8;">Aplicación A: gestión universitaria</strong>
+<p style="margin: 8px 0 0;">Administra estudiantes, carreras, asignaturas, matrículas y calificaciones. El modelo relacional constituye una alternativa adecuada porque permite representar entidades y relaciones mediante tablas y claves.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; border-left: 5px solid #10B981; padding: 20px; border-radius: 9px; margin-bottom: 14px;"><strong style="color: #047857;">Aplicación B: catálogo de productos</strong>
+<p style="margin: 8px 0 0;">Almacena productos de diferentes categorías con atributos variables. Una base documental puede facilitar la representación de estructuras heterogéneas.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; border-left: 5px solid #FBBF24; padding: 20px; border-radius: 9px;"><strong style="color: #92400e;">Aplicación C: análisis de relaciones sociales</strong>
+<p style="margin: 8px 0 0;">Identifica conexiones entre personas y contactos compartidos. Una base de grafos facilita la representación y exploración de relaciones complejas.</p>
+</div>
+<p>Estos ejemplos demuestran que la selección del modelo debe basarse en los requisitos de información, las operaciones necesarias y las características del sistema.</p>
+</section>
+<!-- ACTIVIDAD -->
+<section style="margin-bottom: 35px;">
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-top: 6px solid #3B82F6; padding: 24px; border-radius: 9px;">
+<h3 style="color: #1d4ed8; font-size: 23px; margin: 0 0 14px;">Actividad de análisis y aplicación</h3>
+<h4 style="color: #1f2937; margin: 0 0 12px; font-size: 19px;">Situación problemática: selección de modelos de bases de datos</h4>
+<p>Una empresa de desarrollo de software necesita implementar tres sistemas informáticos para diferentes organizaciones.</p>
+<p>El primero administrará estudiantes, docentes, asignaturas y matrículas de una universidad.</p>
+<p>El segundo gestionará una plataforma comercial con productos de características variables.</p>
+<p>El tercero analizará conexiones entre usuarios de una comunidad digital para identificar relaciones y contactos compartidos.</p>
+<h4 style="color: #1d4ed8; font-size: 19px;">Instrucciones</h4>
+<ol style="padding-left: 25px;">
+<li style="margin-bottom: 9px;">Identificar las entidades y relaciones principales de cada sistema.</li>
+<li style="margin-bottom: 9px;">Seleccionar un modelo de base de datos para cada aplicación.</li>
+<li style="margin-bottom: 9px;">Justificar técnicamente las decisiones considerando la organización de los datos.</li>
+<li style="margin-bottom: 9px;">Identificar qué estructuras de datos se relacionan con cada modelo seleccionado.</li>
+<li style="margin-bottom: 9px;">Proponer una representación sencilla mediante tablas, diccionarios, listas o grafos.</li>
+<li style="margin-bottom: 9px;">Explicar las ventajas y limitaciones de cada modelo.</li>
+<li style="margin-bottom: 9px;">Analizar qué dificultades podrían surgir al utilizar un modelo inadecuado.</li>
+<li style="margin-bottom: 9px;">Comparar las soluciones propuestas y explicar cómo influye el modelo en la recuperación de información.</li>
+</ol>
+<div style="background: #FFFFFF; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px; margin-top: 18px;"><strong style="color: #047857;">Producto esperado</strong>
+<p style="margin: 8px 0 0;">Un cuadro comparativo de los tres sistemas, acompañado de la representación de sus estructuras de información y una justificación técnica sobre la selección de los modelos de bases de datos.</p>
+</div>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 27px 30px; border-radius: 10px; margin-top: 30px;">
+<h3 style="margin: 0 0 15px; color: #fbbf24; font-size: 23px;">Síntesis del subtema</h3>
+<p style="color: #ffffff;">Los modelos de bases de datos establecen diferentes mecanismos para organizar, representar y relacionar información.</p>
+<p style="color: #ffffff;">El modelo jerárquico utiliza relaciones padre-hijo y presenta similitudes con los árboles, mientras que el modelo de red permite establecer conexiones más complejas entre registros, relacionadas conceptualmente con los grafos.</p>
+<p style="color: #ffffff;">El modelo relacional organiza información mediante tablas y utiliza claves para representar asociaciones entre entidades.</p>
+<p style="color: #ffffff;">Las bases de datos NoSQL incluyen diferentes familias, como clave-valor, documental, columnas amplias y grafos, que permiten representar información de acuerdo con distintas necesidades.</p>
+<p style="color: #ffffff;">Desde la perspectiva de las estructuras de datos, estos modelos muestran cómo los conceptos de árboles, grafos, diccionarios, listas y estructuras tabulares permiten comprender diferentes mecanismos de organización de información.</p>
+<p style="color: #ffffff; margin-bottom: 0;">La selección de un modelo debe considerar las características de los datos, las relaciones necesarias, los patrones de consulta y los requisitos de integridad, rendimiento y crecimiento del sistema.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

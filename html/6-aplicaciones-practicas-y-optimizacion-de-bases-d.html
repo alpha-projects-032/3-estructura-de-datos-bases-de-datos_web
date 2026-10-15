@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mv8q1fms-gid3d96fd">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>6. Aplicaciones prácticas y optimización de bases de datos | 3. Estructura de Datos: Bases de Datos</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mv8q1fms-gid3d96fd" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-las-bases-de-datos-como-estructur.html" class="no-ch">1. Fundamentos de las bases de datos como estructura de datos</a>
+</li>
+<li> <a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" class="no-ch">2. Organización y representación de datos en bases de datos</a>
+</li>
+<li> <a href="../html/3-modelos-de-bases-de-datos-y-su-relacion-con-las-.html" class="no-ch">3. Modelos de bases de datos y su relación con las estructuras de datos</a>
+</li>
+<li> <a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" class="no-ch">4. Operaciones fundamentales sobre bases de datos</a>
+</li>
+<li> <a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" class="no-ch">5. Implementación de bases de datos con SQLite y Python</a>
+</li>
+<li class="active"> <a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" class="active no-ch">6. Aplicaciones prácticas y optimización de bases de datos</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-bases-de-datos.html" class="no-ch">Repaso: Estructura de Datos: Bases de Datos</a>
+</li>
+</ul>
+</nav><main id="page-mv8q1fms-gid3d96fd" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">3. Estructura de Datos: Bases de Datos</p></div>
+<div class="page-header"><h1 class="page-title">6. Aplicaciones prácticas y optimización de bases de datos</h1></div>
+</header><div id="page-content-page-mv8q1fms-gid3d96fd" class="page-content">
+<article id="block-mv8rrtuv-qc6xrg87p" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1792022239974-fer1ry2ad" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1792022239974-fer1ry2ad&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial,Helvetica,sans-serif; color: #1f2937; line-height: 1.7; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Bases de datos como estructura de datos</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 29px; font-weight: 600;">Aplicaciones prácticas y optimización de bases de datos</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Aplicar Python y SQLite para organizar información, implementar relaciones, mejorar búsquedas y mantener la integridad de los registros.</p>
+</div>
+<!-- OBJETIVO -->
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 8px; margin-bottom: 25px;">
+<h3 style="color: #1d4ed8; margin: 0 0 12px; font-size: 22px;">Objetivo de aprendizaje</h3>
+<p style="margin: 0;">Aplicar los conocimientos adquiridos sobre bases de datos y estructuras de datos mediante el diseño e implementación de soluciones utilizando Python y SQLite, identificando la importancia de las relaciones entre tablas, los índices, la integridad de la información y la eficiencia de las operaciones de búsqueda, para desarrollar aplicaciones que permitan almacenar, consultar y administrar registros de manera organizada y persistente.</p>
+</div>
+<!-- INTRODUCCIÓN -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 20px 24px; border-radius: 8px; margin-bottom: 30px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Introducción</h3>
+<p>Las bases de datos desempeñan un papel fundamental en el desarrollo de aplicaciones informáticas porque permiten almacenar, organizar, relacionar y recuperar información de manera estructurada.</p>
+<p>Durante los subtemas anteriores se estudiaron sus fundamentos, mecanismos de organización, modelos de representación, operaciones CRUD y procedimientos para implementar bases de datos mediante Python y SQLite.</p>
+<p>Estos conocimientos permiten avanzar hacia la <strong>aplicación práctica y la optimización de las operaciones realizadas sobre los datos</strong>.</p>
+<p>En el estudio de las estructuras de datos, la eficiencia de un algoritmo depende de factores como la cantidad de elementos, su organización y los mecanismos utilizados para acceder a ellos.</p>
+<p>Por ejemplo, buscar un estudiante dentro de una lista puede requerir un recorrido secuencial. En cambio, un diccionario permite localizar valores mediante claves utilizando una tabla hash.</p>
+<p>Las bases de datos también emplean estructuras especializadas para mejorar determinadas operaciones. Entre ellas se encuentran los índices, que pueden apoyarse en árboles B, árboles B+ o estructuras hash, dependiendo del sistema gestor.</p>
+<p style="margin-bottom: 0;">En este subtema se analizarán estas características y se desarrollará una aplicación que integrará Python, SQLite, consultas SQL y criterios básicos de optimización.</p>
+</div>
+<!-- 6.1 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">6.1. Utilización de bases de datos en aplicaciones reales</h3>
+<p>Las bases de datos se utilizan en sistemas que necesitan conservar y administrar información de manera continua. Su implementación depende de los datos utilizados, las operaciones requeridas y los requisitos de integridad, almacenamiento y rendimiento.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Aplicaciones principales</h4>
+<div style="overflow-x: auto; margin: 20px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 700px;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Sistema</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Información almacenada</th>
+<th style="padding: 13px; border: 1px solid #2563EB; text-align: left;">Operaciones frecuentes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Gestión académica</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Estudiantes, carreras y matrículas</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Registrar, consultar y actualizar</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Inventario</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Productos y existencias</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Insertar, buscar y modificar</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Biblioteca</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Libros, usuarios y préstamos</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Consultar, prestar y devolver</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Hospitalario</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Pacientes, citas y expedientes</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Registrar y consultar</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Comercio electrónico</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Clientes, productos y pedidos</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Registrar pedidos y consultar compras</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Atención de solicitudes</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Usuarios, tickets y estados</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Crear, asignar y consultar</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: sistema de inventario</h4>
+<p>Una tienda almacena información de productos mediante una estructura tabular.</p>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 650px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">ID</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Producto</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Categoría</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Precio</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Existencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Teclado</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Periféricos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">25.00</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">15</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">102</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Mouse</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Periféricos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">12.50</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">30</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">103</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Monitor</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Pantallas</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">180.00</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">8</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">104</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Memoria USB</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Almacenamiento</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">10.00</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El sistema necesita recuperar productos por categoría, precio, identificador o cantidad disponible.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Representación mediante Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas,Monaco,monospace; padding: 22px; border-radius: 9px; overflow-x: auto; font-size: 14px;"><code>productos = [
+    {
+        &quot;id&quot;: 101,
+        &quot;nombre&quot;: &quot;Teclado&quot;,
+        &quot;categoria&quot;: &quot;Periféricos&quot;,
+        &quot;precio&quot;: 25.00,
+        &quot;existencia&quot;: 15
+    },
+    {
+        &quot;id&quot;: 102,
+        &quot;nombre&quot;: &quot;Mouse&quot;,
+        &quot;categoria&quot;: &quot;Periféricos&quot;,
+        &quot;precio&quot;: 12.50,
+        &quot;existencia&quot;: 30
+    },
+    {
+        &quot;id&quot;: 103,
+        &quot;nombre&quot;: &quot;Monitor&quot;,
+        &quot;categoria&quot;: &quot;Pantallas&quot;,
+        &quot;precio&quot;: 180.00,
+        &quot;existencia&quot;: 8
+    }
+]</code></pre>
+<p>Para localizar productos con menos de diez unidades:</p>
+<pre style="background: #1F2937; color: #f9fafb; font-family: Consolas,monospace; padding: 20px; border-radius: 9px; overflow-x: auto; font-size: 14px;"><code>for producto in productos:
+    if producto[&quot;existencia&quot;] &lt; 10:
+        print(producto[&quot;nombre&quot;])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 17px 20px; border-radius: 8px; margin: 18px 0;"><strong style="color: #047857;">Resultado esperado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Monitor</pre>
+</div>
+<p>El algoritmo recorre los elementos y evalúa la cantidad disponible de cada producto.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Consulta equivalente en SQL</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace;"><code>SELECT nombre
+FROM productos
+WHERE existencia &lt; 10;</code></pre>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;"><strong>Relación con estructuras de datos:</strong> las listas de Python y las tablas de bases de datos permiten organizar registros, pero presentan diferencias en sus mecanismos de almacenamiento, recuperación y persistencia.</p>
+</div>
+</section>
+<!-- 6.2 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">6.2. Organización de información mediante tablas relacionadas</h3>
+<p>Una base de datos relacional permite separar información en diferentes tablas y establecer asociaciones entre registros. Este mecanismo facilita representar entidades y reducir la repetición innecesaria de datos.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: sistema de biblioteca</h4>
+<div style="overflow-x: auto; margin: 18px 0;">
+<p><strong>Tabla usuarios</strong></p>
+<table style="width: 100%; border-collapse: collapse; min-width: 440px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">id_usuario</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">nombre</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">correo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">ana@ejemplo.com</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">carlos@ejemplo.com</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="overflow-x: auto; margin: 18px 0;">
+<p><strong>Tabla libros</strong></p>
+<table style="width: 100%; border-collapse: collapse; min-width: 440px;">
+<thead>
+<tr style="background: #10B981; color: white;">
+<th style="padding: 11px; border: 1px solid #059669;">id_libro</th>
+<th style="padding: 11px; border: 1px solid #059669;">titulo</th>
+<th style="padding: 11px; border: 1px solid #059669;">autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Python Básico</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">J. Pérez</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">102</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Estructuras de Datos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">M. López</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">103</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Bases de Datos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">A. Ramírez</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="overflow-x: auto; margin: 18px 0;">
+<p><strong>Tabla préstamos</strong></p>
+<table style="width: 100%; border-collapse: collapse; min-width: 510px;">
+<thead>
+<tr style="background: #FBBF24; color: #1f2937;">
+<th style="padding: 11px; border: 1px solid #D97706;">id_prestamo</th>
+<th style="padding: 11px; border: 1px solid #D97706;">id_usuario</th>
+<th style="padding: 11px; border: 1px solid #D97706;">id_libro</th>
+<th style="padding: 11px; border: 1px solid #D97706;">fecha_prestamo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2026-10-01</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">103</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2026-10-03</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">102</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2026-10-05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relaciones entre las tablas</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; margin: 18px 0; text-align: center;">
+<div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center;">
+<div style="flex: 1 1 165px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 17px; border-radius: 8px;"><strong style="color: #1d4ed8;">Usuarios</strong>
+<p style="font-size: 13px; margin: 8px 0 0;">id_usuario (PK)</p>
+</div>
+<div style="color: #3b82f6; font-size: 25px; font-weight: bold;">↔</div>
+<div style="flex: 1 1 165px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 17px; border-radius: 8px;"><strong style="color: #92400e;">Préstamos</strong>
+<p style="font-size: 13px; margin: 8px 0 0;">id_usuario (FK)</p>
+<p style="font-size: 13px; margin: 0;">id_libro (FK)</p>
+</div>
+<div style="color: #3b82f6; font-size: 25px; font-weight: bold;">↔</div>
+<div style="flex: 1 1 165px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 17px; border-radius: 8px;"><strong style="color: #047857;">Libros</strong>
+<p style="font-size: 13px; margin: 8px 0 0;">id_libro (PK)</p>
+</div>
+</div>
+<p style="color: #6b7280; font-size: 13px; margin: 15px 0 0;">PK: clave primaria. FK: clave foránea.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Implementación de tablas relacionadas en SQLite</h4>
+<p>Primero se habilita la comprobación de claves foráneas en la conexión:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;biblioteca.db&quot;)
+
+conexion.execute(&quot;PRAGMA foreign_keys = ON&quot;)</code></pre>
+<p>Posteriormente se crean las tablas:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>conexion.executescript(&quot;&quot;&quot;
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id_usuario INTEGER PRIMARY KEY,
+        nombre TEXT NOT NULL,
+        correo TEXT NOT NULL UNIQUE
+    );
+
+    CREATE TABLE IF NOT EXISTS libros (
+        id_libro INTEGER PRIMARY KEY,
+        titulo TEXT NOT NULL,
+        autor TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS prestamos (
+        id_prestamo INTEGER PRIMARY KEY,
+        id_usuario INTEGER NOT NULL,
+        id_libro INTEGER NOT NULL,
+        fecha_prestamo TEXT NOT NULL,
+        FOREIGN KEY (id_usuario)
+            REFERENCES usuarios(id_usuario),
+        FOREIGN KEY (id_libro)
+            REFERENCES libros(id_libro)
+    );
+&quot;&quot;&quot;)
+
+conexion.commit()
+conexion.close()</code></pre>
+<p>La tabla <code>prestamos</code> utiliza claves foráneas para relacionar usuarios y libros. La comprobación de claves foráneas debe habilitarse en cada conexión que necesite aplicar estas restricciones.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Consultas entre tablas mediante JOIN</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>SELECT
+    usuarios.nombre,
+    libros.titulo,
+    prestamos.fecha_prestamo
+FROM prestamos
+INNER JOIN usuarios
+    ON prestamos.id_usuario = usuarios.id_usuario
+INNER JOIN libros
+    ON prestamos.id_libro = libros.id_libro;</code></pre>
+<p>Con los datos de ejemplo insertados, la consulta devuelve:</p>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 520px;">
+<thead>
+<tr style="background: #10B981; color: white;">
+<th style="padding: 11px; border: 1px solid #059669;">Usuario</th>
+<th style="padding: 11px; border: 1px solid #059669;">Libro</th>
+<th style="padding: 11px; border: 1px solid #059669;">Fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Python Básico</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2026-10-01</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Bases de Datos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2026-10-03</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Estructuras de Datos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2026-10-05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #047857;">Importancia de las relaciones</strong>
+<ul style="padding-left: 23px; margin-bottom: 0;">
+<li>Reducen la duplicación innecesaria de información.</li>
+<li>Permiten vincular registros de diferentes tablas.</li>
+<li>Facilitan consultas que involucran varias entidades.</li>
+<li>Contribuyen a mantener la integridad referencial.</li>
+</ul>
+</div>
+</section>
+<!-- 6.3 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">6.3. Concepto de índices para mejorar las búsquedas</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 9px; margin: 18px 0;">
+<p style="margin: 0; font-size: 17px;">Un <strong>índice de base de datos</strong> es una estructura auxiliar que facilita la localización de registros mediante determinados campos, reduciendo potencialmente el trabajo necesario para ejecutar búsquedas.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo conceptual</h4>
+<p>Una universidad almacena 50,000 estudiantes. Para localizar el identificador 32500, el sistema puede examinar registros o utilizar un índice adecuado que facilite su ubicación.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 270px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 9px;"><strong style="color: #92400e;">Sin un índice adecuado</strong>
+<p>Puede necesitar examinar numerosos registros de la tabla.</p>
+<p style="margin-bottom: 0;">La búsqueda puede aumentar su costo al crecer la cantidad de datos.</p>
+</div>
+<div style="flex: 1 1 270px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;"><strong style="color: #047857;">Con un índice adecuado</strong>
+<p>Puede utilizar una estructura especializada para localizar registros.</p>
+<p style="margin-bottom: 0;">Requiere almacenamiento y mantenimiento adicional.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Creación de un índice en SQLite</h4>
+<p>Supongamos que existe la siguiente tabla:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>CREATE TABLE estudiantes (
+    id_estudiante INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    carrera TEXT NOT NULL,
+    correo TEXT
+);</code></pre>
+<p>Se crea un índice sobre el campo <code>correo</code>:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>CREATE INDEX idx_estudiantes_correo
+ON estudiantes(correo);</code></pre>
+<p>Posteriormente se ejecuta una consulta:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>SELECT *
+FROM estudiantes
+WHERE correo = &#039;ana@ejemplo.com&#039;;</code></pre>
+<p>El optimizador determina si conviene utilizar el índice para ejecutar la consulta.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">¿Cuándo utilizar índices?</h4>
+<ul style="padding-left: 25px;">
+<li>Cuando una tabla contiene numerosos registros.</li>
+<li>Cuando existen búsquedas frecuentes sobre determinados campos.</li>
+<li>Cuando se realizan consultas selectivas.</li>
+<li>Cuando pueden mejorar combinaciones entre tablas.</li>
+<li>Cuando favorecen determinados ordenamientos o filtros.</li>
+</ul>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin: 18px 0;">
+<p style="margin: 0;"><strong>Importante:</strong> no es recomendable crear índices indiscriminadamente. Cada índice consume espacio y puede generar trabajo adicional durante inserciones, actualizaciones y eliminaciones.</p>
+</div>
+<p>En SQLite, <code>INTEGER PRIMARY KEY</code> en una tabla ordinaria compatible con <code>rowid</code> se relaciona directamente con el identificador interno de fila, por lo que normalmente no se necesita otro índice sobre ese campo.</p>
+</section>
+<!-- 6.4 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">6.4. Relación entre índices y estructuras de datos como árboles B y tablas hash</h3>
+<p>Los índices muestran una relación directa entre las bases de datos y las estructuras de datos. Para facilitar búsquedas, los sistemas gestores utilizan mecanismos de organización especializados.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Árboles B</h4>
+<p>Un <strong>árbol B</strong> es una estructura balanceada que mantiene claves ordenadas. Sus nodos pueden contener varias claves y múltiples hijos, lo que favorece el acceso a información organizada en páginas de almacenamiento.</p>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 9px; margin: 20px 0;"><svg viewbox="0 0 560 235" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; max-width: 560px; height: auto; margin: auto;" role="img" aria-label="Ejemplo simplificado de árbol B con raíz de claves 30 y 60 y tres nodos hijos"> <rect x="210" y="15" width="140" height="55" rx="9" fill="#3B82F6"></rect> <line x1="280" y1="70" x2="92" y2="145" stroke="#64748B" stroke-width="3"></line> <line x1="280" y1="70" x2="280" y2="145" stroke="#64748B" stroke-width="3"></line> <line x1="280" y1="70" x2="468" y2="145" stroke="#64748B" stroke-width="3"></line> <text x="280" y="49" fill="#FFFFFF" text-anchor="middle" font-size="21" font-weight="bold">30 | 60</text> <rect x="15" y="145" width="154" height="58" rx="9" fill="#ECFDF5" stroke="#10B981" stroke-width="2"></rect> <rect x="203" y="145" width="154" height="58" rx="9" fill="#ECFDF5" stroke="#10B981" stroke-width="2"></rect> <rect x="391" y="145" width="154" height="58" rx="9" fill="#ECFDF5" stroke="#10B981" stroke-width="2"></rect> <text x="92" y="180" fill="#047857" text-anchor="middle" font-size="20">10 | 20</text> <text x="280" y="180" fill="#047857" text-anchor="middle" font-size="20">40 | 50</text> <text x="468" y="180" fill="#047857" text-anchor="middle" font-size="20">70 | 80</text> <text x="280" y="225" text-anchor="middle" fill="#64748B" font-size="13">Representación simplificada de un árbol B</text> </svg></div>
+<p>Para buscar el valor 50, primero se examina la raíz. Al encontrarse entre 30 y 60, se continúa hacia el nodo central, evitando recorrer las demás ramas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Árboles B+</h4>
+<p>Los árboles B+ constituyen una variante de los árboles B. Generalmente organizan las claves de búsqueda en nodos internos y concentran los valores o referencias correspondientes en las hojas.</p>
+<p>Las hojas suelen estar enlazadas, lo que favorece consultas por rangos y recorridos ordenados.</p>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 570px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB;">Característica</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Árbol B</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Árbol B+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Organización</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Balanceada</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Balanceada</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Claves</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Distribuidas entre nodos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Nodos internos y hojas</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Datos asociados</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Pueden aparecer en distintos niveles</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Habitualmente en hojas</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Consultas por rangos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Posibles</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Favorecidas por hojas enlazadas</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Aplicación</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Almacenamiento e indexación</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Acceso ordenado e indexación</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>SQLite utiliza árboles B con características específicas de su formato interno. No todos los sistemas gestores utilizan exactamente la misma variante.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Tablas hash</h4>
+<p>Una <strong>tabla hash</strong> permite asociar claves con valores mediante una función hash. En condiciones habituales, una búsqueda exacta puede tener complejidad promedio O(1).</p>
+<p>Los diccionarios de Python utilizan una implementación basada en tablas hash:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = {
+    101: &quot;Ana&quot;,
+    102: &quot;Carlos&quot;,
+    103: &quot;María&quot;
+}
+
+print(estudiantes[102])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Carlos</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Comparación entre árboles e índices hash</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 590px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB;">Característica</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Árbol B</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Hash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Organización</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Claves ordenadas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Claves transformadas por hash</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Búsqueda exacta</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Eficiente</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Eficiente</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Búsqueda por rangos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Adecuada</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Generalmente inadecuada</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Ordenamiento</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Puede favorecerlo</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">No mantiene orden por clave</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin: 20px 0;">
+<p style="margin: 0;"><strong>Particularidad de SQLite:</strong> sus índices ordinarios se basan en árboles B. SQLite no incorpora índices hash convencionales mediante <code>CREATE INDEX</code>.</p>
+</div>
+</section>
+<!-- 6.5 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">6.5. Importancia de la integridad y consistencia de los datos</h3>
+<p>La <strong>integridad</strong> consiste en mantener información válida y coherente según las reglas definidas. La consistencia implica respetar las restricciones del sistema durante las operaciones realizadas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: producto de inventario</h4>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 360px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">Campo</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">ID</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Nombre</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Teclado</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Precio</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">25.00</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Existencia</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Si la cantidad representa unidades disponibles, la aplicación no debería permitir existencias negativas. Tampoco debería aceptar precios negativos cuando las reglas del negocio no lo permiten.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Restricciones en SQLite</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>CREATE TABLE productos (
+    id_producto INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    precio REAL NOT NULL CHECK(precio &gt;= 0),
+    existencia INTEGER NOT NULL CHECK(existencia &gt;= 0)
+);</code></pre>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 220px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">PRIMARY KEY</strong>
+<p style="margin: 8px 0 0;">Identifica registros de manera única.</p>
+</div>
+<div style="flex: 1 1 220px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">NOT NULL</strong>
+<p style="margin: 8px 0 0;">Impide almacenar un valor nulo.</p>
+</div>
+<div style="flex: 1 1 220px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">CHECK</strong>
+<p style="margin: 8px 0 0;">Establece condiciones que deben respetar los valores.</p>
+</div>
+</div>
+<p>Ejemplo de restricción:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 18px 22px; border-radius: 8px; overflow-x: auto;"><code>CHECK(existencia &gt;= 0)</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Integridad referencial</h4>
+<p>Las claves foráneas permiten establecer relaciones entre tablas y evitar referencias inválidas cuando se encuentran correctamente definidas y activas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Transacciones y consistencia</h4>
+<p>Una venta puede requerir registrar una transacción comercial y disminuir las existencias de un producto. Ambas operaciones deben coordinarse para evitar inconsistencias.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Actualización protegida</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace;"><code>UPDATE productos
+SET existencia = existencia - 3
+WHERE id_producto = 101
+AND existencia &gt;= 3;</code></pre>
+<p>Esta instrucción descuenta tres unidades únicamente cuando el registro indicado posee existencias suficientes. La aplicación también debe verificar que se haya afectado la fila esperada.</p>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px 24px; border-radius: 9px; margin-top: 20px;"><strong style="color: #047857;">Buenas prácticas</strong>
+<ul style="padding-left: 24px; margin-bottom: 0;">
+<li>Utilizar claves primarias y foráneas.</li>
+<li>Definir restricciones sobre los valores.</li>
+<li>Validar información antes de almacenarla.</li>
+<li>Utilizar transacciones para operaciones relacionadas.</li>
+<li>Evitar modificaciones sin condiciones.</li>
+<li>Administrar adecuadamente los errores.</li>
+</ul>
+</div>
+</section>
+<!-- 6.6 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">6.6. Comparación entre búsquedas secuenciales y búsquedas mediante índices</h3>
+<p>La eficiencia de una búsqueda depende de la cantidad de elementos, de su organización y de los algoritmos utilizados.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Búsqueda secuencial</h4>
+<p>La búsqueda secuencial examina los elementos uno por uno hasta encontrar el valor solicitado.</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [
+    {&quot;id&quot;: 101, &quot;nombre&quot;: &quot;Ana&quot;},
+    {&quot;id&quot;: 102, &quot;nombre&quot;: &quot;Carlos&quot;},
+    {&quot;id&quot;: 103, &quot;nombre&quot;: &quot;María&quot;},
+    {&quot;id&quot;: 104, &quot;nombre&quot;: &quot;José&quot;}
+]
+
+buscado = 103
+
+for estudiante in estudiantes:
+    if estudiante[&quot;id&quot;] == buscado:
+        print(estudiante[&quot;nombre&quot;])
+        break</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">María</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Complejidad temporal</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 18px 0;">
+<div style="flex: 1 1 190px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px; text-align: center;"><strong style="color: #047857; font-size: 23px;">O(1)</strong>
+<p style="margin: 8px 0 0;">Mejor caso: primer elemento.</p>
+</div>
+<div style="flex: 1 1 190px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 8px; text-align: center;"><strong style="color: #1d4ed8; font-size: 23px;">O(n)</strong>
+<p style="margin: 8px 0 0;">Caso promedio.</p>
+</div>
+<div style="flex: 1 1 190px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 8px; text-align: center;"><strong style="color: #92400e; font-size: 23px;">O(n)</strong>
+<p style="margin: 8px 0 0;">Peor caso: último o ausente.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Búsqueda mediante diccionario</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = {
+    101: &quot;Ana&quot;,
+    102: &quot;Carlos&quot;,
+    103: &quot;María&quot;,
+    104: &quot;José&quot;
+}
+
+print(estudiantes[103])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">María</pre>
+</div>
+<p>El acceso por clave en un diccionario presenta complejidad promedio O(1) en condiciones habituales.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Búsqueda mediante índice de base de datos</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>CREATE INDEX idx_estudiantes_correo
+ON estudiantes(correo);</code></pre>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>SELECT *
+FROM estudiantes
+WHERE correo = &#039;ana@ejemplo.com&#039;;</code></pre>
+<p>Un índice balanceado puede reducir el trabajo de búsqueda. En términos generales, una búsqueda en árbol B suele presentar crecimiento logarítmico respecto a la cantidad de entradas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Comparación de complejidades</h4>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 550px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB;">Método</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Estructura</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Complejidad habitual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Búsqueda secuencial</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Lista</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">O(n)</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Acceso por clave</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Diccionario hash</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">O(1) promedio</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Índice balanceado</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Árbol B</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">O(log n) general</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estas complejidades describen modelos teóricos. El tiempo real de una consulta SQL también depende del acceso a páginas, almacenamiento, caché, filtrados y combinaciones de tablas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Comparación experimental con Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import time
+
+cantidad = 100000
+
+lista = list(range(cantidad))
+
+diccionario = {
+    numero: numero
+    for numero in range(cantidad)
+}
+
+buscado = cantidad - 1
+
+inicio = time.perf_counter()
+
+encontrado_lista = buscado in lista
+
+tiempo_lista = time.perf_counter() - inicio
+
+inicio = time.perf_counter()
+
+encontrado_diccionario = buscado in diccionario
+
+tiempo_diccionario = time.perf_counter() - inicio
+
+print(&quot;Encontrado en lista:&quot;, encontrado_lista)
+print(&quot;Tiempo lista:&quot;, tiempo_lista)
+
+print(&quot;Encontrado en diccionario:&quot;, encontrado_diccionario)
+print(&quot;Tiempo diccionario:&quot;, tiempo_diccionario)</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Explicación del experimento</h4>
+<ol style="padding-left: 24px;">
+<li>Se crea una lista con 100,000 números.</li>
+<li>Se crea un diccionario con esos números como claves.</li>
+<li>Se busca el último número.</li>
+<li>Se mide el tiempo de cada operación.</li>
+<li>Se comparan los resultados obtenidos.</li>
+</ol>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;"><strong>Consideración experimental:</strong> los resultados dependen del equipo y de las condiciones de ejecución. Una medición aislada no constituye una comparación estadística suficiente. Para obtener conclusiones más rigurosas deben realizarse varias pruebas.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Inspección del plan de consulta de SQLite</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>EXPLAIN QUERY PLAN
+SELECT *
+FROM estudiantes
+WHERE correo = &#039;ana@ejemplo.com&#039;;</code></pre>
+<p><code>EXPLAIN QUERY PLAN</code> permite inspeccionar la estrategia de acceso que SQLite planea utilizar, incluyendo el posible uso de índices o recorridos de tablas.</p>
+</section>
+<!-- 6.7 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">6.7. Desarrollo de un sistema básico de gestión de información utilizando Python y SQLite</h3>
+<p>Para integrar los conocimientos estudiados se desarrollará una aplicación sencilla de administración de productos utilizando Python y SQLite.</p>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px 24px; border-radius: 9px; margin: 18px 0;"><strong style="color: #1d4ed8;">Funcionalidades del sistema</strong>
+<ul style="padding-left: 24px; margin-bottom: 0;">
+<li>Crear la base de datos y la tabla.</li>
+<li>Registrar productos.</li>
+<li>Consultar el inventario.</li>
+<li>Buscar por identificador.</li>
+<li>Actualizar existencias.</li>
+<li>Eliminar productos.</li>
+<li>Crear un índice para una consulta frecuente.</li>
+</ul>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 1. Importar el módulo</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 18px 22px; border-radius: 8px; overflow-x: auto;"><code>import sqlite3</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 2. Crear la base de datos</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def crear_base_datos():
+    conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        CREATE TABLE IF NOT EXISTS productos (
+            id_producto INTEGER PRIMARY KEY,
+            nombre TEXT NOT NULL,
+            categoria TEXT NOT NULL,
+            precio REAL NOT NULL CHECK(precio &gt;= 0),
+            existencia INTEGER NOT NULL CHECK(existencia &gt;= 0)
+        )
+    &quot;&quot;&quot;)
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<p>La función crea la tabla si no existe, definiendo campos y restricciones para mantener información válida.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 3. Registrar productos</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def registrar_producto(nombre, categoria, precio, existencia):
+    conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        INSERT INTO productos
+        (nombre, categoria, precio, existencia)
+        VALUES (?, ?, ?, ?)
+    &quot;&quot;&quot;, (nombre, categoria, precio, existencia))
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<p>Los marcadores <code>?</code> permiten utilizar consultas parametrizadas y separar los valores de la instrucción SQL.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 4. Consultar productos</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def consultar_productos():
+    conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+    productos = conexion.execute(&quot;&quot;&quot;
+        SELECT *
+        FROM productos
+        ORDER BY id_producto
+    &quot;&quot;&quot;).fetchall()
+
+    for producto in productos:
+        print(producto)
+
+    conexion.close()</code></pre>
+<p>La función utiliza <code>SELECT</code> para recuperar registros y un ciclo <code>for</code> para mostrarlos.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 5. Buscar un producto</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def buscar_producto(id_producto):
+    conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+    producto = conexion.execute(&quot;&quot;&quot;
+        SELECT *
+        FROM productos
+        WHERE id_producto = ?
+    &quot;&quot;&quot;, (id_producto,)).fetchone()
+
+    conexion.close()
+
+    return producto</code></pre>
+<p>La función recupera un registro mediante su identificador. Devuelve <code>None</code> cuando no encuentra el producto.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 6. Actualizar existencias</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def actualizar_existencia(id_producto, nueva_existencia):
+    conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        UPDATE productos
+        SET existencia = ?
+        WHERE id_producto = ?
+    &quot;&quot;&quot;, (nueva_existencia, id_producto))
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<p>La restricción <code>CHECK</code> de la tabla impide que la existencia almacenada sea negativa.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 7. Eliminar un producto</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def eliminar_producto(id_producto):
+    conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        DELETE FROM productos
+        WHERE id_producto = ?
+    &quot;&quot;&quot;, (id_producto,))
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<p>La instrucción elimina el registro identificado, siempre que ninguna restricción aplicable lo impida.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 8. Crear un índice</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def crear_indice():
+    conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        CREATE INDEX IF NOT EXISTS idx_productos_categoria
+        ON productos(categoria)
+    &quot;&quot;&quot;)
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<p>El índice sobre <code>categoria</code> puede mejorar determinadas consultas que utilizan este campo.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 9. Ejecutar las funciones</h4>
+<p>Después de definir las funciones anteriores, se ejecuta el siguiente código:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>crear_base_datos()
+
+registrar_producto(
+    &quot;Teclado&quot;,
+    &quot;Periféricos&quot;,
+    25.00,
+    15
+)
+
+registrar_producto(
+    &quot;Mouse&quot;,
+    &quot;Periféricos&quot;,
+    12.50,
+    30
+)
+
+registrar_producto(
+    &quot;Monitor&quot;,
+    &quot;Pantallas&quot;,
+    180.00,
+    8
+)
+
+crear_indice()
+
+print(&quot;Inventario registrado:&quot;)
+consultar_productos()
+
+print(&quot;Buscar producto:&quot;)
+print(buscar_producto(2))
+
+actualizar_existencia(2, 25)
+
+print(&quot;Inventario actualizado:&quot;)
+consultar_productos()
+
+eliminar_producto(1)
+
+print(&quot;Inventario después de eliminar:&quot;)
+consultar_productos()</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Resultado esperado</h4>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px 24px; border-radius: 9px; margin: 18px 0;"><strong style="color: #047857;">Salida con una base inicialmente vacía</strong>
+<pre style="white-space: pre-wrap; overflow-x: auto; font-family: Consolas,monospace; font-size: 13px; margin: 12px 0 0;">Inventario registrado:
+(1, 'Teclado', 'Periféricos', 25.0, 15)
+(2, 'Mouse', 'Periféricos', 12.5, 30)
+(3, 'Monitor', 'Pantallas', 180.0, 8)
+
+Buscar producto:
+(2, 'Mouse', 'Periféricos', 12.5, 30)
+
+Inventario actualizado:
+(1, 'Teclado', 'Periféricos', 25.0, 15)
+(2, 'Mouse', 'Periféricos', 12.5, 25)
+(3, 'Monitor', 'Pantallas', 180.0, 8)
+
+Inventario después de eliminar:
+(2, 'Mouse', 'Periféricos', 12.5, 25)
+(3, 'Monitor', 'Pantallas', 180.0, 8)</pre>
+</div>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;"><strong>Nota:</strong> los identificadores y resultados pueden variar si el archivo <code>inventario.db</code> ya contiene datos de ejecuciones anteriores.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Análisis de la implementación</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 235px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Estructuras de datos</strong>
+<p style="margin: 8px 0 0;">Python utiliza variables, funciones, listas y tuplas para procesar información.</p>
+</div>
+<div style="flex: 1 1 235px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Base relacional</strong>
+<p style="margin: 8px 0 0;">SQLite organiza registros mediante una tabla de productos.</p>
+</div>
+<div style="flex: 1 1 235px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Operaciones CRUD</strong>
+<p style="margin: 8px 0 0;">Las funciones implementan inserción, consulta, actualización y eliminación.</p>
+</div>
+<div style="flex: 1 1 235px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Persistencia</strong>
+<p style="margin: 8px 0 0;">Los datos confirmados permanecen en el archivo de base de datos.</p>
+</div>
+<div style="flex: 1 1 235px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Indexación</strong>
+<p style="margin: 8px 0 0;">Se crea una estructura auxiliar para consultas por categoría.</p>
+</div>
+<div style="flex: 1 1 235px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Integridad</strong>
+<p style="margin: 8px 0 0;">Las restricciones impiden valores nulos y cantidades negativas.</p>
+</div>
+</div>
+<p>Este programa constituye una implementación didáctica. Una aplicación de producción necesitaría validaciones adicionales, manejo sistemático de errores, controles de acceso y una gestión más completa de conexiones.</p>
+</section>
+<!-- ACTIVIDAD -->
+<section style="margin-bottom: 34px;">
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-top: 6px solid #3B82F6; padding: 24px; border-radius: 9px;">
+<h3 style="color: #1d4ed8; font-size: 23px; margin: 0 0 12px;">Actividad de análisis y aplicación</h3>
+<h4 style="color: #1f2937; font-size: 19px; margin: 0 0 12px;">Situación problemática: optimización de un sistema de gestión académica</h4>
+<p>Una universidad necesita mejorar una aplicación que administra estudiantes, carreras y matrículas.</p>
+<p>Actualmente utiliza SQLite, pero algunas consultas presentan dificultades de rendimiento al aumentar la cantidad de registros.</p>
+<p>Además, se han identificado registros duplicados, referencias incorrectas entre tablas y modificaciones sin validaciones adecuadas.</p>
+<h4 style="color: #1d4ed8; font-size: 19px;">Instrucciones</h4>
+<ol style="padding-left: 25px;">
+<li style="margin-bottom: 9px;">Diseñar una base SQLite con las tablas <code>estudiantes</code>, <code>carreras</code> y <code>matriculas</code>.</li>
+<li style="margin-bottom: 9px;">Definir claves primarias para identificar registros.</li>
+<li style="margin-bottom: 9px;">Establecer claves foráneas para representar relaciones.</li>
+<li style="margin-bottom: 9px;">Agregar restricciones que impidan valores obligatorios nulos y duplicados cuando corresponda.</li>
+<li style="margin-bottom: 9px;">Implementar funciones de Python para las operaciones CRUD.</li>
+<li style="margin-bottom: 9px;">Crear consultas que recuperen estudiantes de una carrera determinada.</li>
+<li style="margin-bottom: 9px;">Crear y justificar un índice para un campo consultado frecuentemente.</li>
+<li style="margin-bottom: 9px;">Utilizar <code>EXPLAIN QUERY PLAN</code> para inspeccionar una consulta.</li>
+<li style="margin-bottom: 9px;">Comparar búsquedas secuenciales en Python con búsquedas que pueden aprovechar índices.</li>
+<li style="margin-bottom: 9px;">Incorporar transacciones para coordinar operaciones relacionadas.</li>
+<li style="margin-bottom: 9px;">Comprobar que las restricciones impidan información inválida.</li>
+<li style="margin-bottom: 9px;">Explicar cómo las estructuras de datos contribuyen al rendimiento del sistema.</li>
+</ol>
+<div style="background: #FFFFFF; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #047857;">Producto esperado</strong>
+<p style="margin: 8px 0 0;">Una aplicación funcional desarrollada con Python y SQLite para administrar información académica mediante tablas relacionadas, operaciones CRUD, restricciones e índices, acompañada de un análisis técnico sobre la integridad y eficiencia del sistema.</p>
+</div>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-top: 30px;">
+<h3 style="margin: 0 0 15px; color: #fbbf24; font-size: 23px;">Síntesis del subtema</h3>
+<p style="color: #ffffff;">Las bases de datos permiten implementar soluciones informáticas que necesitan organizar, relacionar y conservar información de manera persistente.</p>
+<p style="color: #ffffff;">Las tablas relacionadas facilitan representar entidades y asociaciones, mientras que las claves primarias y foráneas contribuyen a mantener la integridad de los registros.</p>
+<p style="color: #ffffff;">Los índices son estructuras auxiliares que pueden mejorar determinadas búsquedas. Su funcionamiento está relacionado con árboles B y tablas hash, dependiendo de las características del sistema gestor.</p>
+<p style="color: #ffffff;">La integridad y consistencia de la información requieren restricciones, validaciones y mecanismos de transacción para controlar las operaciones realizadas.</p>
+<p style="color: #ffffff;">Las búsquedas secuenciales, los accesos mediante tablas hash y los índices balanceados presentan diferentes características de eficiencia.</p>
+<p style="color: #ffffff;">Python y SQLite permiten integrar estos conceptos utilizando estructuras de datos en memoria, almacenamiento persistente, instrucciones SQL e índices.</p>
+<p style="color: #ffffff; margin-bottom: 0;">El diseño adecuado de las estructuras y la selección de mecanismos de acceso son fundamentales para desarrollar sistemas capaces de administrar información de manera organizada, consistente y eficiente.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/repaso-estructura-de-datos-bases-de-datos.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

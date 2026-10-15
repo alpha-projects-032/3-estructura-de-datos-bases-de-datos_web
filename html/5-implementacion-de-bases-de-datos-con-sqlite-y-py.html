@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mv8q19li-whtznbxkd">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>5. Implementación de bases de datos con SQLite y Python | 3. Estructura de Datos: Bases de Datos</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mv8q19li-whtznbxkd" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-las-bases-de-datos-como-estructur.html" class="no-ch">1. Fundamentos de las bases de datos como estructura de datos</a>
+</li>
+<li> <a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" class="no-ch">2. Organización y representación de datos en bases de datos</a>
+</li>
+<li> <a href="../html/3-modelos-de-bases-de-datos-y-su-relacion-con-las-.html" class="no-ch">3. Modelos de bases de datos y su relación con las estructuras de datos</a>
+</li>
+<li> <a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" class="no-ch">4. Operaciones fundamentales sobre bases de datos</a>
+</li>
+<li class="active"> <a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" class="active no-ch">5. Implementación de bases de datos con SQLite y Python</a>
+</li>
+<li> <a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" class="no-ch">6. Aplicaciones prácticas y optimización de bases de datos</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-bases-de-datos.html" class="no-ch">Repaso: Estructura de Datos: Bases de Datos</a>
+</li>
+</ul>
+</nav><main id="page-mv8q19li-whtznbxkd" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">3. Estructura de Datos: Bases de Datos</p></div>
+<div class="page-header"><h1 class="page-title">5. Implementación de bases de datos con SQLite y Python</h1></div>
+</header><div id="page-content-page-mv8q19li-whtznbxkd" class="page-content">
+<article id="block-mv8rfbf7-boeaspyio" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1792021656209-cyj04wkzv" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1792021656209-cyj04wkzv&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial,Helvetica,sans-serif; color: #1f2937; line-height: 1.7; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Bases de datos como estructura de datos</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 29px; font-weight: 600;">Implementación de bases de datos con SQLite y Python</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Crear, administrar y consultar bases de datos persistentes utilizando SQLite, Python y operaciones CRUD.</p>
+</div>
+<!-- OBJETIVO -->
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 8px; margin-bottom: 25px;">
+<h3 style="color: #1d4ed8; margin: 0 0 12px; font-size: 22px;">Objetivo de aprendizaje</h3>
+<p style="margin: 0;">Implementar bases de datos relacionales utilizando SQLite y Python, mediante la creación de conexiones, definición de tablas, inserción, consulta, actualización y eliminación de registros, aplicando las operaciones CRUD y mecanismos básicos de gestión de transacciones, para desarrollar soluciones que permitan almacenar y administrar información de manera persistente y estructurada.</p>
+</div>
+<!-- INTRODUCCIÓN -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 20px 24px; border-radius: 8px; margin-bottom: 30px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Introducción</h3>
+<p>En los subtemas anteriores se estudiaron los fundamentos de las bases de datos, sus mecanismos de organización, los principales modelos de almacenamiento y las operaciones CRUD utilizadas para administrar información.</p>
+<p>Estos conocimientos permiten comprender que una base de datos no solamente almacena registros, sino que también utiliza estructuras y algoritmos especializados para organizar, relacionar y recuperar datos.</p>
+<p>En el desarrollo de software con Python, es posible trabajar con diferentes sistemas gestores de bases de datos. Uno de los más accesibles para comenzar es <strong>SQLite</strong>, debido a que permite crear y administrar bases de datos sin instalar un servidor independiente.</p>
+<p>SQLite es especialmente útil para aplicaciones locales, prototipos, herramientas educativas y sistemas que necesitan almacenar información de manera persistente.</p>
+<p>Python incorpora el módulo <code>sqlite3</code>, que proporciona una interfaz para establecer conexiones, ejecutar instrucciones SQL y recuperar resultados.</p>
+<p style="margin-bottom: 0;">En este subtema se desarrollará una implementación progresiva, comenzando por la creación de una base de datos hasta la construcción de un sistema sencillo de administración de estudiantes.</p>
+</div>
+<!-- 5.1 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">5.1. Introducción a SQLite como sistema de gestión de bases de datos</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 9px; margin-bottom: 20px;">
+<p style="margin: 0; font-size: 17px;"><strong>SQLite</strong> es un motor de bases de datos relacional que permite almacenar y administrar información mediante SQL, sin requerir un servidor independiente.</p>
+</div>
+<p>SQLite se integra con las aplicaciones y normalmente almacena la información persistente en un archivo que contiene tablas, registros, índices y otras estructuras de almacenamiento.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Características principales</h4>
+<div style="overflow-x: auto; margin: 20px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 620px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Característica</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Motor integrado</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Se ejecuta dentro de la aplicación.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Sin servidor independiente</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">No requiere administrar un servidor específico.</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Persistencia</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Puede conservar registros en un archivo local.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>SQL</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Permite crear tablas, consultar y modificar datos.</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Transacciones</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Permite confirmar o revertir operaciones.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Portabilidad</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Los archivos pueden utilizarse en diferentes sistemas compatibles.</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><strong>Integración con Python</strong></td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Disponible mediante el módulo <code>sqlite3</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">¿Cómo funciona SQLite?</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 22px; border-radius: 9px; text-align: center; margin: 20px 0;">
+<div style="max-width: 500px; margin: auto;">
+<div style="background: #3B82F6; color: white; padding: 15px; border-radius: 8px;"><strong>Aplicación Python</strong>
+<div style="font-size: 13px; margin-top: 5px;">Lógica e instrucciones del programa</div>
+</div>
+<div style="font-size: 27px; color: #3b82f6;">↓</div>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; color: #1d4ed8; padding: 15px; border-radius: 8px;"><strong>Módulo sqlite3</strong>
+<div style="font-size: 13px; margin-top: 5px;">Conexiones y ejecución de SQL</div>
+</div>
+<div style="font-size: 27px; color: #3b82f6;">↓</div>
+<div style="background: #10B981; color: white; padding: 15px; border-radius: 8px;"><strong>Motor SQLite</strong>
+<div style="font-size: 13px; margin-top: 5px;">Procesamiento de consultas y almacenamiento</div>
+</div>
+<div style="font-size: 27px; color: #10b981;">↓</div>
+<div style="background: #FFFBEB; border: 1px solid #FDE68A; color: #92400e; padding: 15px; border-radius: 8px;"><strong>Archivo estudiantes.db</strong>
+<div style="font-size: 13px; margin-top: 5px;">Información almacenada de forma persistente</div>
+</div>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con las estructuras de datos</h4>
+<p>SQLite utiliza estructuras como árboles B para organizar internamente las tablas y los índices en bases de datos ordinarias. Estas estructuras contribuyen a las operaciones de búsqueda, inserción y eliminación.</p>
+<p>Mientras el usuario trabaja con tablas y registros, el motor administra las estructuras físicas necesarias para almacenar y recuperar la información.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Aplicaciones de SQLite</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 220px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px; border-radius: 8px;"><strong style="color: #1d4ed8;">Aplicaciones de escritorio</strong>
+<p style="margin: 8px 0 0;">Almacenamiento local de información y configuraciones.</p>
+</div>
+<div style="flex: 1 1 220px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px;"><strong style="color: #047857;">Sistemas de inventario</strong>
+<p style="margin: 8px 0 0;">Administración de productos y existencias.</p>
+</div>
+<div style="flex: 1 1 220px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 18px; border-radius: 8px;"><strong style="color: #92400e;">Prototipos</strong>
+<p style="margin: 8px 0 0;">Desarrollo y validación inicial de aplicaciones.</p>
+</div>
+<div style="flex: 1 1 220px; background: #F3F4F6; border: 1px solid #D1D5DB; padding: 18px; border-radius: 8px;"><strong style="color: #374151;">Herramientas educativas</strong>
+<p style="margin: 8px 0 0;">Prácticas de bases de datos y programación.</p>
+</div>
+</div>
+<p>SQLite también se utiliza en aplicaciones móviles. Su conveniencia depende de las necesidades de concurrencia, arquitectura y funcionamiento de cada sistema.</p>
+</section>
+<!-- 5.2 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.2. Ventajas de utilizar SQLite con Python</h3>
+<p>Python permite organizar información mediante listas y diccionarios. SQLite añade mecanismos de persistencia, consultas y administración relacional.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 240px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 19px; border-radius: 8px;"><strong style="color: #1d4ed8;">Integración directa</strong>
+<p style="margin: 8px 0 0;">El módulo <code>sqlite3</code> pertenece a la biblioteca estándar de Python.</p>
+</div>
+<div style="flex: 1 1 240px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 19px; border-radius: 8px;"><strong style="color: #047857;">Persistencia</strong>
+<p style="margin: 8px 0 0;">Los registros confirmados pueden conservarse en un archivo.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 19px; border-radius: 8px;"><strong style="color: #92400e;">Consultas SQL</strong>
+<p style="margin: 8px 0 0;">Permite filtrar, ordenar y consultar información.</p>
+</div>
+<div style="flex: 1 1 240px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 19px; border-radius: 8px;"><strong style="color: #047857;">Operaciones CRUD</strong>
+<p style="margin: 8px 0 0;">Facilita crear, consultar, actualizar y eliminar registros.</p>
+</div>
+<div style="flex: 1 1 240px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 19px; border-radius: 8px;"><strong style="color: #1d4ed8;">Relaciones</strong>
+<p style="margin: 8px 0 0;">Permite trabajar con claves primarias y foráneas.</p>
+</div>
+<div style="flex: 1 1 240px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 19px; border-radius: 8px;"><strong style="color: #92400e;">Uso local</strong>
+<p style="margin: 8px 0 0;">No requiere configurar un servidor para comenzar.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Comparación entre listas y SQLite</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 620px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Característica</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Listas de Python</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">SQLite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Almacenamiento</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Memoria RAM</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Archivo de base de datos</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Persistencia</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Requiere guardado adicional</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Conserva cambios confirmados</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Consultas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Algoritmos y recorridos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">SQL</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Organización</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Secuencias</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Tablas relacionadas</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Integridad</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Validaciones programadas</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Restricciones del gestor</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Identificación</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Índices o claves del programa</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Claves primarias</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Relaciones</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Implementación manual</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Claves foráneas</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo con una lista</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [&quot;Ana&quot;, &quot;Carlos&quot;, &quot;María&quot;]
+
+print(estudiantes)</code></pre>
+<p>La información permanece en memoria durante la ejecución del programa, salvo que se implemente otro mecanismo de guardado.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo con SQLite</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;estudiantes.db&quot;)
+
+conexion.close()</code></pre>
+<p>La conexión abre el archivo de base de datos y, si no existe, SQLite normalmente lo crea. Todavía no se han definido tablas ni insertado registros.</p>
+</section>
+<!-- 5.3 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.3. Introducción al módulo sqlite3</h3>
+<p>El módulo <code>sqlite3</code> permite establecer conexiones, ejecutar instrucciones SQL, recuperar resultados y controlar transacciones.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Importación del módulo</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>import sqlite3</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Componentes principales</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 620px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Componente</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>sqlite3.connect()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Establecer conexión.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>connection.execute()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Ejecutar SQL desde la conexión.</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>connection.cursor()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Crear un cursor.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>cursor.execute()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Ejecutar una instrucción SQL.</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>cursor.fetchone()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Recuperar una fila.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>cursor.fetchall()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Recuperar las filas restantes.</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>connection.commit()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Confirmar cambios pendientes.</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>connection.rollback()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Revertir cambios no confirmados.</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>connection.close()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Cerrar la conexión.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Concepto de conexión</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+
+print(&quot;Conexión establecida&quot;)
+
+conexion.close()</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px; margin: 16px 0;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Conexión establecida</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Concepto de cursor</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+
+cursor = conexion.cursor()
+
+print(&quot;Cursor creado correctamente&quot;)
+
+conexion.close()</code></pre>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 270px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 8px;"><strong style="color: #1d4ed8;">Conexión</strong>
+<p style="margin: 8px 0 0;">Administra el acceso a la base de datos y las transacciones.</p>
+</div>
+<div style="flex: 1 1 270px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px;"><strong style="color: #047857;">Cursor</strong>
+<p style="margin: 8px 0 0;">Ejecuta instrucciones y recupera resultados.</p>
+</div>
+</div>
+<p>También es posible ejecutar SQL mediante <code>conexion.execute()</code>, que crea un cursor de forma implícita.</p>
+</section>
+<!-- 5.4 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.4. Creación de una base de datos desde Python</h3>
+<p>Para comenzar a utilizar SQLite se establece una conexión con un archivo. Si este no existe, SQLite normalmente lo crea.</p>
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; padding: 20px 24px; border-radius: 9px; margin: 18px 0;">
+<h4 style="color: #1d4ed8; margin: 0 0 10px;">Paso 1. Importar sqlite3</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 16px; border-radius: 8px; overflow-x: auto;"><code>import sqlite3</code></pre>
+<h4 style="color: #1d4ed8; margin: 18px 0 10px;">Paso 2. Crear la conexión</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 16px; border-radius: 8px; overflow-x: auto;"><code>conexion = sqlite3.connect(&quot;universidad.db&quot;)</code></pre>
+<h4 style="color: #1d4ed8; margin: 18px 0 10px;">Paso 3. Crear un cursor</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 16px; border-radius: 8px; overflow-x: auto;"><code>cursor = conexion.cursor()</code></pre>
+<h4 style="color: #1d4ed8; margin: 18px 0 10px;">Paso 4. Cerrar la conexión</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 16px; border-radius: 8px; overflow-x: auto;"><code>conexion.close()</code></pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Código completo</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+# Crear o abrir la base de datos
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+
+# Crear cursor
+cursor = conexion.cursor()
+
+print(&quot;Base de datos preparada correctamente&quot;)
+
+# Cerrar conexión
+conexion.close()</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px; margin: 16px 0;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Base de datos preparada correctamente</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Explicación del proceso</h4>
+<ol style="padding-left: 24px;">
+<li>Python importa el módulo SQLite.</li>
+<li>Establece una conexión con el archivo indicado.</li>
+<li>Crea un cursor para realizar operaciones.</li>
+<li>Muestra un mensaje de confirmación.</li>
+<li>Cierra la conexión.</li>
+</ol>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;">En este momento no se han creado tablas. El archivo <code>universidad.db</code> prepara el almacenamiento para las siguientes operaciones.</p>
+</div>
+</section>
+<!-- 5.5 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.5. Creación de tablas y definición de campos</h3>
+<p>Una vez creada la base de datos se definen las tablas que almacenarán los registros, mediante la instrucción <code>CREATE TABLE</code>.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Estructura de la tabla estudiantes</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 520px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB;">Campo</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Tipo</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Restricción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">id_estudiante</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">INTEGER</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">PRIMARY KEY</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">nombre</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">TEXT</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">NOT NULL</td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">carrera</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">TEXT</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">NOT NULL</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">edad</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">INTEGER</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Sin restricción adicional</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Creación mediante SQL</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>CREATE TABLE estudiantes (
+    id_estudiante INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    carrera TEXT NOT NULL,
+    edad INTEGER
+);</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Creación mediante Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+
+cursor = conexion.cursor()
+
+cursor.execute(&quot;&quot;&quot;
+    CREATE TABLE IF NOT EXISTS estudiantes (
+        id_estudiante INTEGER PRIMARY KEY,
+        nombre TEXT NOT NULL,
+        carrera TEXT NOT NULL,
+        edad INTEGER
+    )
+&quot;&quot;&quot;)
+
+conexion.commit()
+
+print(&quot;Tabla creada correctamente&quot;)
+
+conexion.close()</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Tabla creada correctamente</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Explicación</h4>
+<ul style="padding-left: 24px;">
+<li><code>CREATE TABLE</code> crea la tabla.</li>
+<li><code>IF NOT EXISTS</code> evita el error si la tabla ya existe, pero no modifica su estructura.</li>
+<li><code>INTEGER PRIMARY KEY</code> define el identificador entero.</li>
+<li><code>TEXT NOT NULL</code> exige un valor no nulo.</li>
+<li><code>commit()</code> confirma los cambios pendientes cuando corresponde.</li>
+</ul>
+<h4 style="color: #1d4ed8; font-size: 20px;">Restricciones adicionales</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>CREATE TABLE IF NOT EXISTS productos (
+    id_producto INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    codigo TEXT UNIQUE,
+    precio REAL CHECK(precio &gt;= 0),
+    existencia INTEGER CHECK(existencia &gt;= 0)
+);</code></pre>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;"><code>UNIQUE</code> impide valores duplicados no nulos y <code>CHECK</code> establece condiciones sobre los valores. Estas restricciones contribuyen a mantener la integridad de la información.</p>
+</div>
+</section>
+<!-- 5.6 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.6. Inserción y consulta de registros mediante Python</h3>
+<p>Las operaciones <strong>Create</strong> y <strong>Read</strong> permiten incorporar y recuperar registros de una base de datos.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Inserción de un registro</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+cursor = conexion.cursor()
+
+cursor.execute(&quot;&quot;&quot;
+    INSERT INTO estudiantes
+    (nombre, carrera, edad)
+    VALUES (?, ?, ?)
+&quot;&quot;&quot;, (&quot;Ana Martínez&quot;, &quot;Desarrollo de Software&quot;, 20))
+
+conexion.commit()
+
+print(&quot;Estudiante registrado&quot;)
+
+conexion.close()</code></pre>
+<p>Los marcadores <code>?</code> representan parámetros. Los valores se envían por separado y se asocian según su orden, lo que contribuye a prevenir inyecciones SQL.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Inserción de varios registros con executemany()</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+cursor = conexion.cursor()
+
+estudiantes = [
+    (&quot;Carlos López&quot;, &quot;Redes Informáticas&quot;, 22),
+    (&quot;María Hernández&quot;, &quot;Desarrollo de Software&quot;, 21),
+    (&quot;José Ramírez&quot;, &quot;Ciberseguridad&quot;, 23)
+]
+
+cursor.executemany(&quot;&quot;&quot;
+    INSERT INTO estudiantes
+    (nombre, carrera, edad)
+    VALUES (?, ?, ?)
+&quot;&quot;&quot;, estudiantes)
+
+conexion.commit()
+
+print(&quot;Registros insertados correctamente&quot;)
+
+conexion.close()</code></pre>
+<p>La lista contiene tuplas de estudiantes. <code>executemany()</code> ejecuta la misma instrucción utilizando cada conjunto de valores.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Consulta de todos los registros</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+cursor = conexion.cursor()
+
+cursor.execute(
+    &quot;SELECT * FROM estudiantes ORDER BY id_estudiante&quot;
+)
+
+registros = cursor.fetchall()
+
+for estudiante in registros:
+    print(estudiante)
+
+conexion.close()</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px;"><strong style="color: #047857;">Resultado esperado en una base inicialmente vacía</strong>
+<pre style="white-space: pre-wrap; overflow-x: auto; font-family: Consolas,monospace; font-size: 13px; margin: 10px 0 0;">(1, 'Ana Martínez', 'Desarrollo de Software', 20)
+(2, 'Carlos López', 'Redes Informáticas', 22)
+(3, 'María Hernández', 'Desarrollo de Software', 21)
+(4, 'José Ramírez', 'Ciberseguridad', 23)</pre>
+</div>
+<p>Los identificadores y resultados pueden cambiar si el archivo contiene registros previos o si se ejecutaron varias veces los ejemplos.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Consulta mediante condiciones</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+cursor = conexion.cursor()
+
+cursor.execute(&quot;&quot;&quot;
+    SELECT nombre, edad
+    FROM estudiantes
+    WHERE carrera = ?
+    ORDER BY nombre
+&quot;&quot;&quot;, (&quot;Desarrollo de Software&quot;,))
+
+resultados = cursor.fetchall()
+
+for estudiante in resultados:
+    print(estudiante)
+
+conexion.close()</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado esperado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">('Ana Martínez', 20)
+('María Hernández', 21)</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">fetchone() y fetchall()</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 18px 0;">
+<div style="flex: 1 1 260px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 8px;"><strong style="color: #1d4ed8;">fetchone()</strong>
+<p style="margin: 8px 0 0;">Recupera la siguiente fila disponible, o <code>None</code> si no hay resultados restantes.</p>
+</div>
+<div style="flex: 1 1 260px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px;"><strong style="color: #047857;">fetchall()</strong>
+<p style="margin: 8px 0 0;">Recupera todas las filas restantes y devuelve una lista.</p>
+</div>
+</div>
+<p><strong>Ejemplo con fetchone():</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>cursor.execute(&quot;&quot;&quot;
+    SELECT *
+    FROM estudiantes
+    WHERE id_estudiante = ?
+&quot;&quot;&quot;, (1,))
+
+estudiante = cursor.fetchone()
+
+print(estudiante)</code></pre>
+<p>Este fragmento se ejecuta con una conexión y un cursor previamente creados.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con estructuras de Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>[
+    (1, &quot;Ana&quot;, &quot;Desarrollo de Software&quot;, 20),
+    (2, &quot;Carlos&quot;, &quot;Redes Informáticas&quot;, 22)
+]</code></pre>
+<p>Por defecto, <code>fetchall()</code> devuelve una lista de tuplas. Estos elementos pueden procesarse posteriormente mediante ciclos, condiciones y otras estructuras de datos de Python.</p>
+</section>
+<!-- 5.7 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.7. Actualización y eliminación de información</h3>
+<p>Las operaciones <strong>Update</strong> y <strong>Delete</strong> modifican la información almacenada mediante las instrucciones <code>UPDATE</code> y <code>DELETE</code>.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Actualización mediante SQL</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>UPDATE estudiantes
+SET carrera = &#039;Ciberseguridad&#039;
+WHERE id_estudiante = 2;</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Actualización mediante Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+cursor = conexion.cursor()
+
+cursor.execute(&quot;&quot;&quot;
+    UPDATE estudiantes
+    SET carrera = ?
+    WHERE id_estudiante = ?
+&quot;&quot;&quot;, (&quot;Ciberseguridad&quot;, 2))
+
+conexion.commit()
+
+print(&quot;Registro actualizado&quot;)
+
+conexion.close()</code></pre>
+<p>El primer parámetro establece la nueva carrera y el segundo identifica el registro.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Actualización mediante variables</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>id_estudiante = 2
+nueva_carrera = &quot;Ciberseguridad&quot;
+
+cursor.execute(&quot;&quot;&quot;
+    UPDATE estudiantes
+    SET carrera = ?
+    WHERE id_estudiante = ?
+&quot;&quot;&quot;, (nueva_carrera, id_estudiante))</code></pre>
+<p>Este fragmento requiere una conexión y cursor activos. Facilita utilizar datos provenientes de formularios u otras interfaces.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Eliminación mediante Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;universidad.db&quot;)
+cursor = conexion.cursor()
+
+cursor.execute(&quot;&quot;&quot;
+    DELETE FROM estudiantes
+    WHERE id_estudiante = ?
+&quot;&quot;&quot;, (4,))
+
+conexion.commit()
+
+print(&quot;Operación de eliminación ejecutada&quot;)
+
+conexion.close()</code></pre>
+<p>Si el registro existe, será eliminado. Si no existe, la ejecución puede finalizar sin error y sin eliminar filas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Verificación con rowcount</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>cursor.execute(&quot;&quot;&quot;
+    DELETE FROM estudiantes
+    WHERE id_estudiante = ?
+&quot;&quot;&quot;, (4,))
+
+print(&quot;Registros eliminados:&quot;, cursor.rowcount)
+
+conexion.commit()</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 16px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado si existía el registro</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Registros eliminados: 1</pre>
+</div>
+<div style="background: #FEF2F2; border: 1px solid #FECACA; border-left: 5px solid #EF4444; padding: 18px 22px; border-radius: 8px; margin: 20px 0;"><strong style="color: #b91c1c;">Precaución con las condiciones</strong>
+<pre style="background: #1F2937; color: white; padding: 17px; border-radius: 8px; overflow-x: auto;"><code>DELETE FROM estudiantes;</code></pre>
+<p style="margin-bottom: 0;">Sin <code>WHERE</code>, la instrucción elimina todas las filas de la tabla. También <code>UPDATE</code> puede modificar todos los registros si se omite la condición.</p>
+</div>
+</section>
+<!-- 5.8 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.8. Gestión de conexiones, transacciones y confirmación de cambios</h3>
+<p>Una <strong>transacción</strong> es una unidad de trabajo que agrupa operaciones relacionadas y permite administrar sus cambios de manera coordinada.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 270px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px;"><strong style="color: #047857;">commit()</strong>
+<p style="margin: 8px 0 0;">Confirma los cambios pendientes de una transacción.</p>
+<pre style="background: #1F2937; color: #ffffff; padding: 13px; border-radius: 7px; overflow-x: auto;"><code>conexion.commit()</code></pre>
+</div>
+<div style="flex: 1 1 270px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 8px;"><strong style="color: #92400e;">rollback()</strong>
+<p style="margin: 8px 0 0;">Revierte los cambios no confirmados de una transacción.</p>
+<pre style="background: #1F2937; color: #ffffff; padding: 13px; border-radius: 7px; overflow-x: auto;"><code>conexion.rollback()</code></pre>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo de transacción: transferencia de inventario</h4>
+<p>Un sistema necesita transferir cinco unidades del producto 101 desde el almacén 1 hacia el almacén 2. Se supone que la tabla <code>inventario</code> ya existe y contiene los registros de ambos almacenes.</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>import sqlite3
+
+conexion = sqlite3.connect(&quot;inventario.db&quot;)
+
+try:
+    cursor = conexion.cursor()
+
+    cursor.execute(&quot;&quot;&quot;
+        UPDATE inventario
+        SET cantidad = cantidad - 5
+        WHERE id_almacen = 1
+        AND id_producto = 101
+        AND cantidad &gt;= 5
+    &quot;&quot;&quot;)
+
+    if cursor.rowcount != 1:
+        raise ValueError(&quot;Existencia insuficiente&quot;)
+
+    cursor.execute(&quot;&quot;&quot;
+        UPDATE inventario
+        SET cantidad = cantidad + 5
+        WHERE id_almacen = 2
+        AND id_producto = 101
+    &quot;&quot;&quot;)
+
+    if cursor.rowcount != 1:
+        raise ValueError(&quot;Almacén destino no encontrado&quot;)
+
+    conexion.commit()
+    print(&quot;Transferencia completada&quot;)
+
+except (sqlite3.Error, ValueError) as error:
+    conexion.rollback()
+    print(&quot;Error:&quot;, error)
+
+finally:
+    conexion.close()</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Explicación</h4>
+<ol style="padding-left: 24px;">
+<li>El bloque <code>try</code> ejecuta las operaciones.</li>
+<li>La primera instrucción descuenta cinco unidades del almacén de origen si existen suficientes.</li>
+<li>La segunda incorpora cinco unidades al almacén de destino.</li>
+<li><code>rowcount</code> verifica que cada operación afecte un registro.</li>
+<li><code>commit()</code> confirma los cambios cuando todo es correcto.</li>
+<li><code>rollback()</code> revierte cambios pendientes ante errores.</li>
+<li><code>finally</code> cierra la conexión.</li>
+</ol>
+<p>El ejemplo utiliza el comportamiento transaccional habitual de <code>sqlite3</code>. El modo exacto de administración de transacciones depende de la configuración de la conexión.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Buenas prácticas</h4>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px 24px; border-radius: 9px;">
+<ul style="padding-left: 23px; margin: 0;">
+<li>Cerrar las conexiones cuando ya no se necesitan.</li>
+<li>Utilizar consultas parametrizadas.</li>
+<li>Confirmar cambios correctos con <code>commit()</code>.</li>
+<li>Revertir cambios ante errores con <code>rollback()</code>.</li>
+<li>Aplicar restricciones de integridad.</li>
+<li>Evitar actualizaciones y eliminaciones sin condiciones.</li>
+<li>Verificar los resultados de las operaciones importantes.</li>
+</ul>
+</div>
+</section>
+<!-- 5.9 -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">5.9. Ejemplo práctico de implementación de una base de datos sencilla</h3>
+<p>Se desarrollará un sistema básico de estudiantes utilizando funciones de Python y SQLite.</p>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; padding: 18px 22px; border-radius: 8px; margin: 18px 0;"><strong style="color: #1d4ed8;">Funcionalidades</strong>
+<ul style="padding-left: 22px; margin-bottom: 0;">
+<li>Crear la base de datos y la tabla.</li>
+<li>Registrar estudiantes.</li>
+<li>Consultar estudiantes.</li>
+<li>Actualizar carreras.</li>
+<li>Eliminar registros.</li>
+<li>Conservar información entre ejecuciones.</li>
+</ul>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 1. Importar el módulo</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 18px 22px; border-radius: 8px; overflow-x: auto;"><code>import sqlite3</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 2. Crear la base de datos y la tabla</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def crear_base_datos():
+    conexion = sqlite3.connect(&quot;estudiantes.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        CREATE TABLE IF NOT EXISTS estudiantes (
+            id INTEGER PRIMARY KEY,
+            nombre TEXT NOT NULL,
+            carrera TEXT NOT NULL,
+            edad INTEGER
+        )
+    &quot;&quot;&quot;)
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<p>La función crea la estructura si todavía no existe.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 3. Registrar estudiantes</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def registrar_estudiante(nombre, carrera, edad):
+    conexion = sqlite3.connect(&quot;estudiantes.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        INSERT INTO estudiantes (nombre, carrera, edad)
+        VALUES (?, ?, ?)
+    &quot;&quot;&quot;, (nombre, carrera, edad))
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<p>Los datos se insertan mediante parámetros, evitando incorporar directamente los valores dentro del texto SQL.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 4. Consultar estudiantes</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def consultar_estudiantes():
+    conexion = sqlite3.connect(&quot;estudiantes.db&quot;)
+
+    registros = conexion.execute(&quot;&quot;&quot;
+        SELECT *
+        FROM estudiantes
+        ORDER BY id
+    &quot;&quot;&quot;).fetchall()
+
+    for estudiante in registros:
+        print(estudiante)
+
+    conexion.close()</code></pre>
+<p>La función recupera registros ordenados por identificador y los recorre utilizando <code>for</code>.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 5. Actualizar estudiantes</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def actualizar_carrera(id_estudiante, nueva_carrera):
+    conexion = sqlite3.connect(&quot;estudiantes.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        UPDATE estudiantes
+        SET carrera = ?
+        WHERE id = ?
+    &quot;&quot;&quot;, (nueva_carrera, id_estudiante))
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 6. Eliminar estudiantes</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>def eliminar_estudiante(id_estudiante):
+    conexion = sqlite3.connect(&quot;estudiantes.db&quot;)
+
+    conexion.execute(&quot;&quot;&quot;
+        DELETE FROM estudiantes
+        WHERE id = ?
+    &quot;&quot;&quot;, (id_estudiante,))
+
+    conexion.commit()
+    conexion.close()</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Paso 7. Ejecutar las operaciones</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>crear_base_datos()
+
+registrar_estudiante(
+    &quot;Ana Martínez&quot;,
+    &quot;Desarrollo de Software&quot;,
+    20
+)
+
+registrar_estudiante(
+    &quot;Carlos López&quot;,
+    &quot;Redes Informáticas&quot;,
+    22
+)
+
+print(&quot;Estudiantes registrados:&quot;)
+consultar_estudiantes()
+
+actualizar_carrera(2, &quot;Ciberseguridad&quot;)
+
+print(&quot;Después de actualizar:&quot;)
+consultar_estudiantes()
+
+eliminar_estudiante(1)
+
+print(&quot;Después de eliminar:&quot;)
+consultar_estudiantes()</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px; margin: 20px 0;"><strong style="color: #047857;">Resultado esperado en una base inicialmente vacía</strong>
+<pre style="white-space: pre-wrap; overflow-x: auto; font-family: Consolas,monospace; font-size: 13px; margin: 12px 0 0;">Estudiantes registrados:
+(1, 'Ana Martínez', 'Desarrollo de Software', 20)
+(2, 'Carlos López', 'Redes Informáticas', 22)
+
+Después de actualizar:
+(1, 'Ana Martínez', 'Desarrollo de Software', 20)
+(2, 'Carlos López', 'Ciberseguridad', 22)
+
+Después de eliminar:
+(2, 'Carlos López', 'Ciberseguridad', 22)</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Análisis de la implementación</h4>
+<p>Cada función implementa una responsabilidad: creación de tablas, inserción, consulta, actualización o eliminación. Python administra las instrucciones mientras SQLite conserva la información.</p>
+<p>Los identificadores permiten seleccionar registros específicos, y las consultas devuelven datos que pueden procesarse mediante listas, tuplas y ciclos.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;">
+<p style="margin: 0;"><strong>Nota:</strong> para obtener exactamente el resultado mostrado debe utilizarse una base inicialmente vacía. La ejecución repetida puede insertar nuevos registros y modificar los identificadores. Este ejemplo didáctico no incluye todas las validaciones y controles de errores de una aplicación de producción.</p>
+</div>
+</section>
+<!-- ACTIVIDAD -->
+<section style="margin-bottom: 34px;">
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-top: 6px solid #3B82F6; padding: 24px; border-radius: 9px;">
+<h3 style="color: #1d4ed8; font-size: 23px; margin: 0 0 12px;">Actividad de análisis y aplicación</h3>
+<h4 style="color: #1f2937; font-size: 19px; margin: 0 0 12px;">Situación problemática: sistema de gestión de inventario</h4>
+<p>Una empresa necesita desarrollar una aplicación local para administrar productos mediante Python y SQLite. Actualmente utiliza listas y diccionarios, pero necesita mantener los registros después de cerrar el programa.</p>
+<h4 style="color: #1d4ed8; font-size: 19px;">Estructura propuesta</h4>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 580px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">Campo</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Tipo SQLite</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: white;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">id_producto</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">INTEGER</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Identificador único</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">nombre</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">TEXT</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Nombre del producto</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">categoria</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">TEXT</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Clasificación del producto</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">precio</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">REAL</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Precio de referencia</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">existencia</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">INTEGER</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Cantidad disponible</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 19px;">Instrucciones</h4>
+<ol style="padding-left: 25px;">
+<li style="margin-bottom: 8px;">Crear una base de datos llamada <code>inventario.db</code>.</li>
+<li style="margin-bottom: 8px;">Definir la tabla <code>productos</code> con los campos indicados.</li>
+<li style="margin-bottom: 8px;">Establecer restricciones que impidan nombres nulos, precios negativos y existencias negativas.</li>
+<li style="margin-bottom: 8px;">Implementar una función para registrar productos.</li>
+<li style="margin-bottom: 8px;">Crear una función que consulte todos los productos.</li>
+<li style="margin-bottom: 8px;">Implementar una consulta para buscar productos por categoría.</li>
+<li style="margin-bottom: 8px;">Desarrollar una función para actualizar el precio mediante su identificador.</li>
+<li style="margin-bottom: 8px;">Crear una función para modificar la existencia disponible.</li>
+<li style="margin-bottom: 8px;">Implementar una función para eliminar un registro específico.</li>
+<li style="margin-bottom: 8px;">Utilizar <code>commit()</code> y <code>rollback()</code> para administrar los cambios.</li>
+<li style="margin-bottom: 8px;">Verificar que los datos permanezcan almacenados después de cerrar y volver a ejecutar el programa.</li>
+<li style="margin-bottom: 8px;">Explicar la relación con las estructuras de datos de Python y las operaciones CRUD.</li>
+</ol>
+<div style="background: #FFFFFF; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #047857;">Producto esperado</strong>
+<p style="margin: 8px 0 0;">Una aplicación funcional desarrollada en Python que utilice SQLite para administrar un inventario básico, acompañada de una explicación de las funciones implementadas, las instrucciones SQL utilizadas y las ventajas del almacenamiento persistente.</p>
+</div>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-top: 30px;">
+<h3 style="margin: 0 0 15px; color: #fbbf24; font-size: 23px;">Síntesis del subtema</h3>
+<p style="color: #ffffff;">SQLite es un motor de bases de datos relacional que permite almacenar y administrar información mediante SQL sin requerir un servidor independiente.</p>
+<p style="color: #ffffff;">Su integración con Python se realiza mediante el módulo <code style="color: #fde68a;">sqlite3</code>, que proporciona herramientas para establecer conexiones, ejecutar instrucciones y recuperar resultados.</p>
+<p style="color: #ffffff;">La creación de tablas permite definir la organización lógica de los datos mediante campos, tipos y restricciones.</p>
+<p style="color: #ffffff;">Las instrucciones <code style="color: #fde68a;">INSERT</code>, <code style="color: #fde68a;">SELECT</code>, <code style="color: #fde68a;">UPDATE</code> y <code style="color: #fde68a;">DELETE</code> permiten implementar las operaciones CRUD.</p>
+<p style="color: #ffffff;">Las consultas parametrizadas contribuyen a realizar operaciones de manera segura, mientras que las transacciones permiten confirmar o revertir cambios.</p>
+<p style="color: #ffffff;">Desde la perspectiva de las estructuras de datos, SQLite utiliza mecanismos internos de organización e indexación, mientras que Python permite procesar resultados mediante listas, tuplas, diccionarios y algoritmos.</p>
+<p style="color: #ffffff; margin-bottom: 0;">La integración de ambas tecnologías permite desarrollar aplicaciones capaces de gestionar información estructurada y persistente, relacionando los fundamentos de las estructuras de datos con su aplicación en sistemas de bases de datos.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mv8q10as-3a5hyet1l">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>4. Operaciones fundamentales sobre bases de datos | 3. Estructura de Datos: Bases de Datos</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mv8q10as-3a5hyet1l" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Inicio</a>
+</li>
+<li> <a href="../html/1-fundamentos-de-las-bases-de-datos-como-estructur.html" class="no-ch">1. Fundamentos de las bases de datos como estructura de datos</a>
+</li>
+<li> <a href="../html/2-organizacion-y-representacion-de-datos-en-bases-.html" class="no-ch">2. Organización y representación de datos en bases de datos</a>
+</li>
+<li> <a href="../html/3-modelos-de-bases-de-datos-y-su-relacion-con-las-.html" class="no-ch">3. Modelos de bases de datos y su relación con las estructuras de datos</a>
+</li>
+<li class="active"> <a href="../html/4-operaciones-fundamentales-sobre-bases-de-datos.html" class="active no-ch">4. Operaciones fundamentales sobre bases de datos</a>
+</li>
+<li> <a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" class="no-ch">5. Implementación de bases de datos con SQLite y Python</a>
+</li>
+<li> <a href="../html/6-aplicaciones-practicas-y-optimizacion-de-bases-d.html" class="no-ch">6. Aplicaciones prácticas y optimización de bases de datos</a>
+</li>
+<li> <a href="../html/repaso-estructura-de-datos-bases-de-datos.html" class="no-ch">Repaso: Estructura de Datos: Bases de Datos</a>
+</li>
+</ul>
+</nav><main id="page-mv8q10as-3a5hyet1l" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">3. Estructura de Datos: Bases de Datos</p></div>
+<div class="page-header"><h1 class="page-title">4. Operaciones fundamentales sobre bases de datos</h1></div>
+</header><div id="page-content-page-mv8q10as-3a5hyet1l" class="page-content">
+<article id="block-mv8r4gtm-fgkas0zep" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1792021149992-hlyvn8ats" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1792021149992-hlyvn8ats&quot;}">
+<div class="exe-text-template">
+    <div style="font-family: Arial,Helvetica,sans-serif; color: #1f2937; line-height: 1.7; max-width: 1200px; margin: 0 auto;"><!-- ENCABEZADO PRINCIPAL -->
+<div style="background: #3B82F6; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-bottom: 24px;">
+<div style="display: inline-block; background: #FBBF24; color: #1f2937; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 12px;">Bases de datos como estructura de datos</div>
+<h2 style="margin: 0 0 10px; color: #ffffff; font-size: 29px; font-weight: 600;">Operaciones fundamentales sobre bases de datos</h2>
+<p style="margin: 0; color: #ffffff; font-size: 17px;">Comprender y aplicar las operaciones CRUD mediante SQL y su relación con las estructuras de datos de Python.</p>
+</div>
+<!-- OBJETIVO DE APRENDIZAJE -->
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 8px; margin-bottom: 25px;">
+<h3 style="color: #1d4ed8; margin: 0 0 12px; font-size: 22px;">Objetivo de aprendizaje</h3>
+<p style="margin: 0;">Comprender y aplicar las operaciones fundamentales de manipulación de datos mediante el modelo CRUD, identificando las funciones de creación, consulta, actualización y eliminación de registros, así como su implementación mediante instrucciones SQL, para reconocer cómo las bases de datos permiten administrar información de manera estructurada y su relación con las operaciones utilizadas en las estructuras de datos de Python.</p>
+</div>
+<!-- INTRODUCCIÓN -->
+<div style="background: #F9F9FB; border: 1px solid #E5E7EB; border-left: 6px solid #10B981; padding: 20px 24px; border-radius: 8px; margin-bottom: 30px;">
+<h3 style="color: #1f2937; margin: 0 0 12px; font-size: 22px;">Introducción</h3>
+<p>Durante el desarrollo de aplicaciones informáticas, no es suficiente almacenar información de manera organizada. También es necesario realizar operaciones que permitan incorporar nuevos datos, recuperar registros existentes, modificar información y eliminar elementos que ya no sean necesarios.</p>
+<p>Estas operaciones son fundamentales para el funcionamiento de sistemas académicos, comerciales, hospitalarios, financieros y administrativos.</p>
+<p>En el estudio de las estructuras de datos, operaciones como insertar, buscar, modificar y eliminar elementos se implementan mediante métodos y algoritmos específicos.</p>
+<p>Por ejemplo, una lista de Python permite agregar elementos utilizando <code>append()</code>, buscar valores mediante recorridos, actualizar posiciones mediante índices y eliminar elementos utilizando <code>remove()</code> o <code>pop()</code>.</p>
+<p>Las bases de datos presentan necesidades similares, pero incorporan mecanismos especializados para administrar registros persistentes y mantener la integridad de la información.</p>
+<p style="margin-bottom: 0;">Uno de los conceptos más importantes es <strong>CRUD</strong>, que agrupa las operaciones de crear, leer, actualizar y eliminar. En el modelo relacional se implementan mediante instrucciones SQL.</p>
+</div>
+<!-- 4.1 CRUD -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px; margin-bottom: 20px;">4.1. Concepto de operaciones CRUD</h3>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 6px solid #3B82F6; padding: 22px 25px; border-radius: 9px; margin-bottom: 20px;">
+<p style="margin: 0; font-size: 17px;"><strong>CRUD</strong> proviene de las palabras inglesas <strong>Create, Read, Update y Delete</strong>, que representan las cuatro operaciones fundamentales para administrar registros.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 22px 0;">
+<div style="flex: 1 1 210px; background: #EFF6FF; border: 1px solid #BFDBFE; border-top: 5px solid #3B82F6; padding: 20px; border-radius: 9px;">
+<div style="font-size: 28px; font-weight: bold; color: #1d4ed8;">C</div>
+<strong style="color: #1d4ed8;">Create - Crear</strong>
+<p style="margin: 8px 0 0;">Incorporar nuevos registros mediante <code>INSERT</code>.</p>
+</div>
+<div style="flex: 1 1 210px; background: #ECFDF5; border: 1px solid #A7F3D0; border-top: 5px solid #10B981; padding: 20px; border-radius: 9px;">
+<div style="font-size: 28px; font-weight: bold; color: #047857;">R</div>
+<strong style="color: #047857;">Read - Leer</strong>
+<p style="margin: 8px 0 0;">Consultar información mediante <code>SELECT</code>.</p>
+</div>
+<div style="flex: 1 1 210px; background: #FFFBEB; border: 1px solid #FDE68A; border-top: 5px solid #FBBF24; padding: 20px; border-radius: 9px;">
+<div style="font-size: 28px; font-weight: bold; color: #92400e;">U</div>
+<strong style="color: #92400e;">Update - Actualizar</strong>
+<p style="margin: 8px 0 0;">Modificar registros mediante <code>UPDATE</code>.</p>
+</div>
+<div style="flex: 1 1 210px; background: #F3F4F6; border: 1px solid #D1D5DB; border-top: 5px solid #6B7280; padding: 20px; border-radius: 9px;">
+<div style="font-size: 28px; font-weight: bold; color: #374151;">D</div>
+<strong style="color: #374151;">Delete - Eliminar</strong>
+<p style="margin: 8px 0 0;">Retirar registros mediante <code>DELETE</code>.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Operaciones fundamentales</h4>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+<thead>
+<tr style="background: #3B82F6; color: #ffffff;">
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Operación</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Significado</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">Función</th>
+<th style="padding: 12px; border: 1px solid #2563EB; text-align: left;">SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Create</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Crear</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Incorporar registros</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><code>INSERT</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Read</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Leer</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Consultar registros</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><code>SELECT</code></td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Update</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Actualizar</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Modificar registros</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><code>UPDATE</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Delete</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Eliminar</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;">Retirar registros</td>
+<td style="padding: 12px; border: 1px solid #D1D5DB;"><code>DELETE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: sistema de estudiantes</h4>
+<p>Una universidad utiliza las operaciones CRUD para registrar estudiantes, consultar matrículas, actualizar información académica y retirar registros autorizados.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con estructuras de datos</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 12px; border: 1px solid #2563EB;">CRUD</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Lista de Python</th>
+<th style="padding: 12px; border: 1px solid #2563EB;">Base de datos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Crear</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>append()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>INSERT</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Leer</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Índices o recorridos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>SELECT</code></td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Actualizar</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Asignación por índice</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>UPDATE</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Eliminar</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>remove()</code>, <code>pop()</code></td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>DELETE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Las listas de Python suelen trabajar en memoria, mientras que una base de datos persistente permite conservar cambios confirmados e incorporar mecanismos de integridad y transacciones.</p>
+</section>
+<!-- 4.2 CREATE -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">4.2. Creación de registros (Create)</h3>
+<p>La operación <strong>Create</strong> incorpora registros a una tabla mediante la instrucción <code>INSERT</code>.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: registro de estudiantes</h4>
+<p><strong>Tabla antes de la inserción:</strong></p>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 500px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">id_estudiante</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">nombre</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">carrera</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">edad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">20</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Redes Informáticas</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">22</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Sintaxis básica:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>INSERT INTO nombre_tabla (campo1, campo2, campo3)
+VALUES (valor1, valor2, valor3);</code></pre>
+<p><strong>Inserción de María Hernández:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>INSERT INTO estudiantes
+(id_estudiante, nombre, carrera, edad)
+VALUES
+(3, &#039;María Hernández&#039;, &#039;Desarrollo de Software&#039;, 21);</code></pre>
+<div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 18px; border-radius: 8px; margin: 18px 0;"><strong style="color: #047857;">Tabla después de la inserción</strong>
+<div style="overflow-x: auto; margin-top: 12px;">
+<table style="width: 100%; border-collapse: collapse; min-width: 480px;">
+<thead>
+<tr style="background: #10B981; color: white;">
+<th style="padding: 10px; border: 1px solid #059669;">ID</th>
+<th style="padding: 10px; border: 1px solid #059669;">Nombre</th>
+<th style="padding: 10px; border: 1px solid #059669;">Carrera</th>
+<th style="padding: 10px; border: 1px solid #059669;">Edad</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: white;">
+<td style="padding: 9px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">20</td>
+</tr>
+<tr>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">Redes Informáticas</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">22</td>
+</tr>
+<tr style="background: #D1FAE5;">
+<td style="padding: 9px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">María Hernández</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+<td style="padding: 9px; border: 1px solid #D1D5DB;">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Explicación de la instrucción</h4>
+<ul style="padding-left: 23px;">
+<li><code>INSERT INTO</code> indica una inserción.</li>
+<li><code>estudiantes</code> identifica la tabla.</li>
+<li>Los campos entre paréntesis indican las columnas.</li>
+<li><code>VALUES</code> contiene los valores correspondientes.</li>
+</ul>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con listas en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [
+    {&quot;id&quot;: 1, &quot;nombre&quot;: &quot;Ana&quot;},
+    {&quot;id&quot;: 2, &quot;nombre&quot;: &quot;Carlos&quot;}
+]
+
+nuevo_estudiante = {
+    &quot;id&quot;: 3,
+    &quot;nombre&quot;: &quot;María&quot;
+}
+
+estudiantes.append(nuevo_estudiante)
+
+print(estudiantes)</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 17px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="white-space: pre-wrap; overflow-x: auto; font-family: Consolas,monospace; font-size: 13px; margin: 8px 0 0;">[{'id': 1, 'nombre': 'Ana'}, {'id': 2, 'nombre': 'Carlos'}, {'id': 3, 'nombre': 'María'}]</pre>
+</div>
+<p>El método <code>append()</code> agrega al final de una lista; <code>INSERT</code> crea una fila, sin asignarle una posición de orden garantizada.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px;"><strong style="color: #92400e;">Consideraciones</strong>
+<p style="margin: 8px 0 0;">Antes de insertar se deben verificar tipos de datos, campos obligatorios, restricciones de unicidad y claves primarias. Un identificador declarado como clave primaria no puede duplicarse.</p>
+</div>
+</section>
+<!-- 4.3 READ -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">4.3. Consulta y recuperación de información (Read)</h3>
+<p>La operación <strong>Read</strong> recupera información almacenada mediante <code>SELECT</code>, seleccionando registros completos o aquellos que cumplen condiciones.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Tabla de referencia</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 500px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">ID</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Nombre</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Carrera</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Edad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">20</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Redes Informáticas</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">22</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">María Hernández</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Consultar todos los registros</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>SELECT *
+FROM estudiantes;</code></pre>
+<p>El símbolo <code>*</code> indica que se recuperan todas las columnas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Consultar campos específicos</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>SELECT nombre, carrera
+FROM estudiantes;</code></pre>
+<div style="overflow-x: auto; margin: 16px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 400px;">
+<thead>
+<tr style="background: #10B981; color: white;">
+<th style="padding: 10px; border: 1px solid #059669;">Nombre</th>
+<th style="padding: 10px; border: 1px solid #059669;">Carrera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Redes Informáticas</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">María Hernández</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Consultar mediante WHERE</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>SELECT *
+FROM estudiantes
+WHERE carrera = &#039;Desarrollo de Software&#039;;</code></pre>
+<p>La consulta recupera a Ana Martínez y María Hernández, quienes pertenecen a Desarrollo de Software.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Operadores de comparación</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 430px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">Operador</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Significado</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>=</code></td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Igual</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>edad = 20</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>&gt;</code></td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Mayor</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>edad &gt; 20</code></td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>&lt;</code></td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Menor</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>edad &lt; 25</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>&gt;=</code></td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Mayor o igual</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>edad &gt;= 18</code></td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>&lt;=</code></td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Menor o igual</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>edad &lt;= 30</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>&lt;&gt;</code></td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Diferente</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;"><code>edad &lt;&gt; 20</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Operadores lógicos AND, OR y NOT</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>SELECT *
+FROM estudiantes
+WHERE carrera = &#039;Desarrollo de Software&#039;
+AND edad &gt;= 21;</code></pre>
+<p>Recupera estudiantes de Desarrollo de Software con edad mayor o igual a 21 años.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ordenamiento con ORDER BY</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>SELECT *
+FROM estudiantes
+ORDER BY nombre ASC;</code></pre>
+<p><code>ASC</code> representa orden ascendente y <code>DESC</code> orden descendente. Sin <code>ORDER BY</code>, SQL no garantiza un orden de filas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con búsquedas en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [
+    {&quot;id&quot;: 1, &quot;nombre&quot;: &quot;Ana&quot;, &quot;edad&quot;: 20},
+    {&quot;id&quot;: 2, &quot;nombre&quot;: &quot;Carlos&quot;, &quot;edad&quot;: 22},
+    {&quot;id&quot;: 3, &quot;nombre&quot;: &quot;María&quot;, &quot;edad&quot;: 21}
+]
+
+for estudiante in estudiantes:
+    if estudiante[&quot;edad&quot;] &gt; 20:
+        print(estudiante[&quot;nombre&quot;])</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 17px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">Carlos
+María</pre>
+</div>
+<p>El ciclo recorre la lista y evalúa una condición, de forma semejante al propósito de una consulta SQL. Un gestor puede usar recorridos o índices para ejecutar consultas.</p>
+<div style="background: #FFFBEB; border-left: 5px solid #FBBF24; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #92400e;">Importancia de los índices</strong>
+<p style="margin: 8px 0 0;">Los índices son estructuras auxiliares que pueden acelerar búsquedas. Algunos utilizan árboles B o B+, aunque su beneficio depende de los datos, la consulta y el diseño.</p>
+</div>
+</section>
+<!-- 4.4 UPDATE -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">4.4. Actualización de registros (Update)</h3>
+<p>La operación <strong>Update</strong> modifica información almacenada mediante la instrucción <code>UPDATE</code>.</p>
+<p>Por ejemplo, Carlos López cambia de Redes Informáticas a Ciberseguridad.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Sintaxis básica</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>UPDATE nombre_tabla
+SET campo = nuevo_valor
+WHERE condicion;</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Actualización de carrera</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>UPDATE estudiantes
+SET carrera = &#039;Ciberseguridad&#039;
+WHERE id_estudiante = 2;</code></pre>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 450px;">
+<thead>
+<tr style="background: #10B981; color: white;">
+<th style="padding: 11px; border: 1px solid #059669;">ID</th>
+<th style="padding: 11px; border: 1px solid #059669;">Nombre</th>
+<th style="padding: 11px; border: 1px solid #059669;">Carrera actualizada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+</tr>
+<tr style="background: #D1FAE5;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ciberseguridad</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">María Hernández</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>UPDATE</code> identifica la tabla, <code>SET</code> establece el nuevo valor y <code>WHERE</code> selecciona los registros afectados.</p>
+<div style="background: #FEF2F2; border: 1px solid #FECACA; border-left: 5px solid #EF4444; padding: 18px 22px; border-radius: 8px; margin: 20px 0;"><strong style="color: #b91c1c;">Precaución: UPDATE sin WHERE</strong>
+<pre style="background: #1F2937; color: #ffffff; padding: 16px; border-radius: 7px; overflow-x: auto;"><code>UPDATE estudiantes
+SET carrera = &#039;Ciberseguridad&#039;;</code></pre>
+<p style="margin-bottom: 0;">Esta instrucción actualiza todos los registros de la tabla porque no existe una condición que limite la operación.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Actualización de varios campos</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>UPDATE estudiantes
+SET carrera = &#039;Ciberseguridad&#039;,
+    edad = 23
+WHERE id_estudiante = 2;</code></pre>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [
+    {&quot;id&quot;: 1, &quot;nombre&quot;: &quot;Ana&quot;, &quot;carrera&quot;: &quot;Software&quot;},
+    {&quot;id&quot;: 2, &quot;nombre&quot;: &quot;Carlos&quot;, &quot;carrera&quot;: &quot;Redes&quot;}
+]
+
+for estudiante in estudiantes:
+    if estudiante[&quot;id&quot;] == 2:
+        estudiante[&quot;carrera&quot;] = &quot;Ciberseguridad&quot;
+
+print(estudiantes)</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 17px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="white-space: pre-wrap; overflow-x: auto; margin: 8px 0 0; font-family: Consolas,monospace; font-size: 13px;">[{'id': 1, 'nombre': 'Ana', 'carrera': 'Software'}, {'id': 2, 'nombre': 'Carlos', 'carrera': 'Ciberseguridad'}]</pre>
+</div>
+<p>La asignación modifica el valor asociado a la clave del diccionario, una operación conceptualmente semejante a <code>UPDATE</code>.</p>
+</section>
+<!-- 4.5 DELETE -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">4.5. Eliminación de registros (Delete)</h3>
+<p>La operación <strong>Delete</strong> retira registros mediante la instrucción <code>DELETE</code>, respetando las condiciones y reglas establecidas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo: eliminar un estudiante</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>DELETE FROM estudiantes
+WHERE id_estudiante = 3;</code></pre>
+<p>Se elimina el registro de María Hernández, identificada con el código 3.</p>
+<div style="overflow-x: auto; margin: 16px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 410px;">
+<thead>
+<tr style="background: #10B981; color: white;">
+<th style="padding: 11px; border: 1px solid #059669;">ID</th>
+<th style="padding: 11px; border: 1px solid #059669;">Nombre</th>
+<th style="padding: 11px; border: 1px solid #059669;">Carrera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Desarrollo de Software</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ciberseguridad</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: #FEF2F2; border: 1px solid #FECACA; border-left: 5px solid #EF4444; padding: 18px 22px; border-radius: 8px; margin: 20px 0;"><strong style="color: #b91c1c;">Precaución: DELETE sin WHERE</strong>
+<pre style="background: #1F2937; color: #ffffff; padding: 16px; border-radius: 7px; overflow-x: auto;"><code>DELETE FROM estudiantes;</code></pre>
+<p style="margin-bottom: 0;">Elimina todas las filas de la tabla. La tabla permanece creada, pero queda sin registros.</p>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación con estructuras de datos en Python</h4>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [&quot;Ana&quot;, &quot;Carlos&quot;, &quot;María&quot;]
+
+estudiantes.remove(&quot;María&quot;)
+
+print(estudiantes)</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 15px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="margin: 8px 0 0; font-family: Consolas,monospace;">['Ana', 'Carlos']</pre>
+</div>
+<p>También puede eliminarse un registro de una lista de diccionarios mediante una condición:</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>estudiantes = [
+    {&quot;id&quot;: 1, &quot;nombre&quot;: &quot;Ana&quot;},
+    {&quot;id&quot;: 2, &quot;nombre&quot;: &quot;Carlos&quot;},
+    {&quot;id&quot;: 3, &quot;nombre&quot;: &quot;María&quot;}
+]
+
+estudiantes = [
+    estudiante
+    for estudiante in estudiantes
+    if estudiante[&quot;id&quot;] != 3
+]
+
+print(estudiantes)</code></pre>
+<div style="background: #ECFDF5; border-left: 5px solid #10B981; padding: 15px 20px; border-radius: 8px;"><strong style="color: #047857;">Resultado</strong>
+<pre style="white-space: pre-wrap; overflow-x: auto; margin: 8px 0 0; font-family: Consolas,monospace; font-size: 13px;">[{'id': 1, 'nombre': 'Ana'}, {'id': 2, 'nombre': 'Carlos'}]</pre>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Eliminación física y eliminación lógica</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+<div style="flex: 1 1 280px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px; border-radius: 9px;"><strong style="color: #1d4ed8;">Eliminación física</strong>
+<p style="margin: 8px 0 0;">El registro se retira de la tabla mediante una instrucción <code>DELETE</code>.</p>
+</div>
+<div style="flex: 1 1 280px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 9px;"><strong style="color: #047857;">Eliminación lógica</strong>
+<p style="margin: 8px 0 0;">El registro permanece almacenado, pero un campo indica que está inactivo.</p>
+</div>
+</div>
+<p>Ejemplo de eliminación lógica en una tabla con el campo <code>activo</code>:</p>
+<div style="overflow-x: auto; margin: 15px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 400px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">ID</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Nombre</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Activo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Ana Martínez</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">2</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Carlos López</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">1</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">3</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">María Hernández</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>UPDATE estudiantes
+SET activo = 0
+WHERE id_estudiante = 3;</code></pre>
+<p>El valor <code>0</code> indica que el registro se encuentra inactivo. Este enfoque puede servir para conservar información histórica según las políticas del sistema.</p>
+</section>
+<!-- 4.6 SQL -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">4.6. Introducción al lenguaje SQL</h3>
+<div style="background: #EFF6FF; border-left: 6px solid #3B82F6; padding: 20px 24px; border-radius: 8px; margin: 18px 0;">
+<p style="margin: 0;"><strong>SQL (Structured Query Language)</strong> es un lenguaje utilizado para definir, consultar y manipular información en sistemas de bases de datos relacionales.</p>
+</div>
+<p>SQL es principalmente declarativo: permite especificar los resultados deseados y el gestor determina cómo realizar muchas de las operaciones.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Categorías principales de SQL</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; min-width: 650px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">Categoría</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Nombre</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Función</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">DDL</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Data Definition Language</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Definir estructuras</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>CREATE</code>, <code>ALTER</code>, <code>DROP</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">DML</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Data Manipulation Language</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Manipular registros</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">DQL</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Data Query Language</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Consultar datos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>SELECT</code></td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 11px; border: 1px solid #D1D5DB;">DCL</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Data Control Language</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Gestionar permisos</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>GRANT</code>, <code>REVOKE</code></td>
+</tr>
+<tr>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">TCL</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Transaction Control Language</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;">Controlar transacciones</td>
+<td style="padding: 11px; border: 1px solid #D1D5DB;"><code>COMMIT</code>, <code>ROLLBACK</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size: 14px; color: #4b5563;">La clasificación es didáctica y depende del gestor. SQLite no incorpora <code>GRANT</code> y <code>REVOKE</code> como instrucciones propias para administrar permisos de usuarios.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Ejemplo completo del ciclo CRUD</h4>
+<p><strong>Crear la tabla:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>CREATE TABLE estudiantes (
+    id_estudiante INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    carrera TEXT NOT NULL,
+    edad INTEGER
+);</code></pre>
+<p>La instrucción define cuatro campos, una clave primaria y dos campos obligatorios.</p>
+<p><strong>Insertar información:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>INSERT INTO estudiantes
+(id_estudiante, nombre, carrera, edad)
+VALUES
+(1, &#039;Ana Martínez&#039;, &#039;Desarrollo de Software&#039;, 20);</code></pre>
+<p><strong>Consultar información:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>SELECT *
+FROM estudiantes;</code></pre>
+<p><strong>Actualizar información:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>UPDATE estudiantes
+SET edad = 21
+WHERE id_estudiante = 1;</code></pre>
+<p><strong>Eliminar información:</strong></p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 20px; border-radius: 9px; overflow-x: auto;"><code>DELETE FROM estudiantes
+WHERE id_estudiante = 1;</code></pre>
+<p>El conjunto muestra las operaciones CRUD sobre la misma tabla. La creación de la estructura mediante <code>CREATE TABLE</code> corresponde a DDL y es distinta de la creación de registros mediante <code>INSERT</code>.</p>
+</section>
+<!-- 4.7 IMPORTANCIA -->
+<section style="margin-bottom: 34px;">
+<h3 style="color: #1f2937; font-size: 24px; border-bottom: 3px solid #3B82F6; padding-bottom: 9px;">4.7. Importancia de las operaciones CRUD en la administración de datos</h3>
+<p>CRUD constituye la base de muchas funcionalidades: registrar datos, consultar información, actualizar formularios y eliminar registros de acuerdo con las reglas de cada sistema.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Integración en aplicaciones reales</h4>
+<div style="overflow-x: auto; margin: 20px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 780px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">Aplicación</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Create</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Read</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Update</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">Delete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Académico</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Registrar estudiante</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Consultar matrícula</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Modificar carrera</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Retirar registro autorizado</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Inventario</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Agregar producto</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Consultar existencia</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Actualizar cantidad</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Retirar producto</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Biblioteca</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Registrar préstamo</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Consultar préstamos</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Actualizar devolución</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Eliminar si está permitido</td>
+</tr>
+<tr style="background: #F9F9FB;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Comercio electrónico</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Crear pedido</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Consultar compras</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Actualizar estado</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Cancelar según reglas</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Tickets</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Crear solicitud</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Consultar estado</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Modificar prioridad</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Eliminar si está permitido</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Integridad de los datos</h4>
+<p>Las operaciones deben respetar restricciones. Por ejemplo, una matrícula no debería relacionarse con un estudiante inexistente cuando existen claves foráneas activas.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Transacciones</h4>
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; padding: 20px 24px; border-radius: 9px; margin: 18px 0;">
+<p style="margin: 0;">Una <strong>transacción</strong> es una unidad de trabajo compuesta por una o varias operaciones que deben coordinarse para mantener la consistencia de la información.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 18px 0;">
+<div style="flex: 1 1 260px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 20px; border-radius: 8px;"><strong style="color: #047857;"><code>COMMIT</code></strong>
+<p style="margin: 8px 0 0;">Confirma los cambios realizados durante una transacción.</p>
+</div>
+<div style="flex: 1 1 260px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 20px; border-radius: 8px;"><strong style="color: #92400e;"><code>ROLLBACK</code></strong>
+<p style="margin: 8px 0 0;">Revierte los cambios no confirmados de una transacción.</p>
+</div>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Caso: venta en un inventario</h4>
+<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 20px; border-radius: 8px;">
+<ol style="padding-left: 22px; margin: 0;">
+<li>Registrar la venta de dos teclados.</li>
+<li>Disminuir en dos unidades la existencia.</li>
+<li>Confirmar ambas operaciones si resultaron correctamente.</li>
+<li>Revertir la transacción si alguna operación falla.</li>
+</ol>
+</div>
+<h4 style="color: #1d4ed8; font-size: 20px;">Seguridad en las operaciones</h4>
+<p>Al ejecutar SQL desde Python se recomienda utilizar consultas parametrizadas en lugar de concatenar directamente los datos recibidos de usuarios.</p>
+<pre style="background: #1F2937; color: #f9fafb; padding: 22px; border-radius: 9px; overflow-x: auto; font-family: Consolas,monospace; font-size: 14px;"><code>cursor.execute(
+    &quot;SELECT * FROM estudiantes WHERE id_estudiante = ?&quot;,
+    (id_estudiante,)
+)</code></pre>
+<p>El símbolo <code>?</code> representa un parámetro cuyo valor se proporciona separadamente de la instrucción SQL. Esto contribuye a prevenir inyecciones SQL cuando se utiliza correctamente.</p>
+<h4 style="color: #1d4ed8; font-size: 20px;">Relación entre CRUD y eficiencia</h4>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0;">
+<div style="flex: 1 1 220px; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 17px; border-radius: 8px;"><strong style="color: #1d4ed8;">Cantidad de registros</strong>
+<p style="margin: 8px 0 0;">El volumen de datos puede influir en los tiempos de procesamiento.</p>
+</div>
+<div style="flex: 1 1 220px; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 17px; border-radius: 8px;"><strong style="color: #047857;">Estructuras e índices</strong>
+<p style="margin: 8px 0 0;">Pueden facilitar búsquedas y requerir mantenimiento.</p>
+</div>
+<div style="flex: 1 1 220px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 17px; border-radius: 8px;"><strong style="color: #92400e;">Condiciones y transacciones</strong>
+<p style="margin: 8px 0 0;">Influyen en los registros afectados y las garantías de consistencia.</p>
+</div>
+</div>
+<p>Los índices pueden acelerar consultas, pero también generan costos al insertarse, modificarse o eliminarse registros. La eficiencia depende del diseño, del volumen de información y de los algoritmos utilizados por el gestor.</p>
+</section>
+<!-- ACTIVIDAD -->
+<section style="margin-bottom: 34px;">
+<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-top: 6px solid #3B82F6; padding: 24px; border-radius: 9px;">
+<h3 style="color: #1d4ed8; font-size: 23px; margin: 0 0 12px;">Actividad de análisis y aplicación</h3>
+<h4 style="color: #1f2937; font-size: 19px; margin: 0 0 12px;">Situación problemática: administración de productos en una tienda</h4>
+<p>Una tienda necesita implementar un sistema para gestionar su inventario. Actualmente dispone de los siguientes registros:</p>
+<div style="overflow-x: auto; margin: 18px 0;">
+<table style="width: 100%; border-collapse: collapse; min-width: 460px;">
+<thead>
+<tr style="background: #3B82F6; color: white;">
+<th style="padding: 11px; border: 1px solid #2563EB;">id_producto</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">nombre</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">precio</th>
+<th style="padding: 11px; border: 1px solid #2563EB;">existencia</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: white;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">101</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Teclado</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">25.00</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">15</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">102</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Mouse</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">12.50</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">30</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 10px; border: 1px solid #D1D5DB;">103</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Monitor</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">180.00</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">8</td>
+</tr>
+<tr>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">104</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">Memoria USB</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">10.00</td>
+<td style="padding: 10px; border: 1px solid #D1D5DB;">40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 style="color: #1d4ed8; font-size: 19px;">Situaciones</h4>
+<ul style="padding-left: 23px;">
+<li>Incorporar Audífonos, ID 105, precio 35.00 y existencia 20.</li>
+<li>Consultar productos con precio superior a 20.00.</li>
+<li>Actualizar el precio del Mouse a 14.00.</li>
+<li>Registrar la venta de tres monitores actualizando su existencia.</li>
+<li>Retirar el producto Memoria USB.</li>
+<li>Ordenar los productos por precio de menor a mayor.</li>
+</ul>
+<h4 style="color: #1d4ed8; font-size: 19px;">Instrucciones</h4>
+<ol style="padding-left: 25px;">
+<li style="margin-bottom: 8px;">Identificar la operación CRUD de cada situación.</li>
+<li style="margin-bottom: 8px;">Escribir el SQL para incorporar el producto nuevo.</li>
+<li style="margin-bottom: 8px;">Construir la consulta de productos con precio superior a 20.00.</li>
+<li style="margin-bottom: 8px;">Actualizar el precio del Mouse y la existencia del Monitor.</li>
+<li style="margin-bottom: 8px;">Construir la instrucción para eliminar Memoria USB.</li>
+<li style="margin-bottom: 8px;">Ordenar productos por precio ascendente.</li>
+<li style="margin-bottom: 8px;">Explicar los riesgos de omitir <code>WHERE</code>.</li>
+<li style="margin-bottom: 8px;">Describir cómo ejecutar estas operaciones mediante listas de diccionarios en Python.</li>
+<li style="margin-bottom: 8px;">Analizar las ventajas del almacenamiento persistente.</li>
+<li style="margin-bottom: 8px;">Explicar la influencia de índices y transacciones.</li>
+</ol>
+<div style="background: white; border-left: 5px solid #10B981; padding: 18px 22px; border-radius: 8px; margin-top: 20px;"><strong style="color: #047857;">Producto esperado</strong>
+<p style="margin: 8px 0 0;">Un conjunto de instrucciones SQL que resuelva las situaciones planteadas, acompañado de una explicación de su relación con las operaciones sobre listas y diccionarios de Python.</p>
+</div>
+</div>
+</section>
+<!-- SÍNTESIS -->
+<div style="background: #1F2937; color: #ffffff; padding: 26px 30px; border-radius: 10px; margin-top: 30px;">
+<h3 style="margin: 0 0 15px; color: #fbbf24; font-size: 23px;">Síntesis del subtema</h3>
+<p style="color: #ffffff;">Las operaciones CRUD constituyen un modelo fundamental para administrar información mediante las acciones de creación, lectura, actualización y eliminación.</p>
+<p style="color: #ffffff;">En las bases de datos relacionales se realizan principalmente mediante las instrucciones SQL <code style="color: #fde68a;">INSERT</code>, <code style="color: #fde68a;">SELECT</code>, <code style="color: #fde68a;">UPDATE</code> y <code style="color: #fde68a;">DELETE</code>.</p>
+<p style="color: #ffffff;">Estas operaciones se relacionan conceptualmente con los métodos de inserción, acceso, modificación y eliminación utilizados en listas y diccionarios de Python.</p>
+<p style="color: #ffffff;">Los sistemas gestores incorporan mecanismos adicionales para mantener información persistente, aplicar restricciones de integridad y administrar transacciones.</p>
+<p style="color: #ffffff;">El uso correcto de SQL requiere comprender las condiciones de búsqueda, la identificación de registros y los riesgos asociados con modificaciones o eliminaciones sin criterios específicos.</p>
+<p style="color: #ffffff; margin-bottom: 0;">Finalmente, el rendimiento de CRUD depende de las estructuras de almacenamiento, índices, algoritmos, cantidad de registros y mecanismos de transacción. Su comprensión establece las bases para implementar sistemas de gestión mediante Python y SQLite.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/3-modelos-de-bases-de-datos-y-su-relacion-con-las-.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/5-implementacion-de-bases-de-datos-con-sqlite-y-py.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>
